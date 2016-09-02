@@ -1,0 +1,37 @@
+body {
+  background: #B1DDF1;
+}
+
+#logo {
+    font-size: 120px;
+    text-align: center;
+    padding-top: 30%;
+}
+
+#login_container {
+  padding-top: 60%;
+}
+
+.login_details {
+  text-align: center;
+  font-size: 80px;
+}
+
+.line_break {
+  width: 70%;
+  color: #f00;
+  background-color: #f00;
+  height: 5px;
+}
+
+#white_space {
+  padding-top: 40px;
+}
+
+#login {
+  border: 1px solid black;
+  width:600px;
+  height:200px;
+  background:blue;
+  margin: auto;
+}
