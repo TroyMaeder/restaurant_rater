@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "express": "^4.14.0",
+    "jade": "^1.11.0",
     "mongoose": "^4.5.10",
+    "pug": "^2.0.0-beta6",
     "request": "^2.74.0"
   }
 }
