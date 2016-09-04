@@ -1,22 +1,30 @@
-extend layout
-block content
-  p
-    | Vivamus hendrerit arcu sed erat molestie
-    | vehicula. Sed auctor neque eu tellus
-    | rhoncus ut eleifend nibh porttitor. Ut in.
-  p
-    | Donec congue lacinia dui, a porttitor
-    | lectus condimentum laoreet. Nunc eu
-    | ullamcorper orci. Quisque eget odio ac
-    | lectus vestibulum faucibus eget in metus.
-    | In pellentesque faucibus vestibulum. Nulla
-    | at nulla justo, eget luctus tortor.
-block sidebar
-  .widget
-    h1 Widget
-    p
-      | Sed auctor neque eu tellus rhoncus ut
-      | eleifend nibh porttitor. Ut in nulla enim.
-    p
-      | Vivamus hendrerit arcu sed erat molestie
-      | vehicula.
+app.get('/api', (req, res) => {
+  apiRequest('https://developers.zomato.com/api/v2.1/search?apikey=39075b374a5c0d9ee98fcc8e52d0a07c&q=gauchos');
+});
+
+function apiRequest(api, req, res) {
+  request(api, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      const json = JSON.parse(body);
+      const restaurantImage = json.restaurants[0].restaurant.featured_image;
+      const restaurantJPG = `${restaurantImage}`;
+      res.render('restaurants',
+        { title: restaurantImage }
+      );
+    }
+  });
+}
+
+// app.get('/api', (req, res) => {
+//   request(apiCall, (error, response, body) => {
+//     if (!error && response.statusCode === 200) {
+//       const json = JSON.parse(body);
+//       const restaurantImage = json.restaurants[0].restaurant.featured_image;
+//       const restaurantJPG = `'${restaurantImage}'`;
+//       console.log(restaurantJPG);
+//       res.render('restaurants',
+//       { title: restaurantImage}
+//       );
+//     }
+//   });
+// });
