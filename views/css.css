@@ -1,0 +1,36 @@
+.restaurant {
+  background-image: url("https://b.zmtcdn.com/data/pictures/chains/0/6100580/5f113fc379bf1daf5e57f60ca65e7d35_featured_v2.jpg");
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  height: 400px;
+  width: 100%;
+}
+
+
+.restaurant2 {
+  background-image: url("https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg");
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  height: 400px;
+  width: 100%;
+}
+
+
+.restaurant_title {
+  color: white;
+  text-align: center;
+  padding-top: 15%;
+  font-family: "Courier New";
+  font-size: 80px;
+}
+
+#nav_bar {
+  background-color: green;
+  height: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.home_icon {
+  padding-left: 45px;
+}

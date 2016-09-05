@@ -6,6 +6,7 @@ function apiRequest(api, req, res) {
   request(api, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       const restaurantImage = JSON.parse(body.restaurants[0].restaurant.featured_image);
+      const restaurantName = JSON.parse(body.restaurants[0].restaurant.name);
       res.render('restaurants',
         { title: restaurantImage }
       );
