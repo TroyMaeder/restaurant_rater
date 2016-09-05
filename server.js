@@ -20,6 +20,7 @@ app.get('/api', (req, res) => {
         const json = JSON.parse(body);
         const restaurantImage = json.restaurants[0].restaurant.featured_image;
         const restaurantJPG = `${restaurantImage}`;
+        console.log(json.restaurants[0].restaurant.name);
 
         const json1 = JSON.parse(body1);
         const restaurantImage1 = json1.restaurants[0].restaurant.featured_image;
