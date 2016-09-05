@@ -1,3 +1,7 @@
+body {
+  border: 0;
+}
+
 .restaurant {
   background-image: url("https://b.zmtcdn.com/data/pictures/chains/0/6100580/5f113fc379bf1daf5e57f60ca65e7d35_featured_v2.jpg");
   background-repeat:no-repeat;
@@ -22,15 +26,22 @@
   padding-top: 15%;
   font-family: "Courier New";
   font-size: 80px;
+  font-weight: 500;
 }
 
 #nav_bar {
-  background-color: green;
-  height: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
+  background-color: #4169E1;
+  height: 120px;
+  position:fixed;
+  width: 100%;
+  padding-left: 1%;
+  bottom:0;
+  left:0;
+  border: 20px;
 }
 
 .home_icon {
+  padding-top: 6px;
   padding-left: 45px;
+  padding-bottom: 6px;
 }
