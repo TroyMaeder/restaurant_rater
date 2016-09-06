@@ -1,5 +1,5 @@
 .restaurant_image img {
-  height: 450px;
+  height: 400px;
   width: 100%;
 }
 
@@ -20,7 +20,7 @@
   padding-bottom: 6px;
 }
 
-.restaurant_title {
+.title {
   color: white;
   text-align: center;
   padding-top: 15%;
