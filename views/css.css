@@ -16,7 +16,8 @@ body {
    width: 100%;
    color: white;
    text-align: center;
-   font-size: 80px;
+   font-size: 100px;
+   font-family: "Lucida Console", Monaco, monospace;
 }
 .restaurant img {
   height: 450px;

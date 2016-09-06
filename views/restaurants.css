@@ -1,6 +1,28 @@
-.restaurant_image img {
-  height: 400px;
+p {
+  font-size: 100px;
+}
+
+#container {
+  font-size: 200px;
+}
+
+img {
+  height: 600px;
   width: 100%;
+  position: relative;
+}
+
+h4 {
+  font-size: 60px;
+  color: white;
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+}
+
+.restaurant_title {
+  font-size: 60px;
 }
 
 #nav_bar {
@@ -20,7 +42,7 @@
   padding-bottom: 6px;
 }
 
-.title {
+.restaurant_title {
   color: white;
   text-align: center;
   padding-top: 15%;
