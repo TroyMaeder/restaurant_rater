@@ -10,7 +10,7 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 
 app.get('/', (req, res) => {
-  res.render('login ');
+  res.render('login');
 });
 
 app.get('/api', (req, res) => {
