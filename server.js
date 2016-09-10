@@ -11,11 +11,14 @@ app.get('/', (req, res) => {
   res.render('login');
 });
 
+const arr = [{n: 6} , {n: 4} , {n:9}]
+
 const restaurants = [
   {
     name: 'TGI Fridays',
     picture: 'https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg',
   },
+  {
 ];
 
 const restaurants2 = [
