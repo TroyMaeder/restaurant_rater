@@ -4,21 +4,15 @@ html
     link(type='text/css', rel='stylesheet', href='/restaurants.css')
     title restaurant-rater
   body
-    .restaurant
-      .title #{name}
+    .restaurant_container
+      .title_container  #{name}
       img(src=picture)
-    .restaurant
-      .title #{name}
-      img(src=picture)
-    .restaurant
-      .title #{name}
-      img(src=picture)
-    .restaurant
-      .title #{name}
-      img(src=picture)
-    .restaurant
-      .title #{name}
-      img(src=picture)
+    .restaurant_container
+      .title_container  #{name2}
+      img(src=picture2)
+    .restaurant_container
+      .title_container  #{name3}
+      img(src=picture3)
     #nav_bar
       svg.home_icon(fill='#FFFFFF', height='70', viewbox='0 0 24 24', width='90', xmlns='http://www.w3.org/2000/svg')
         path(d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z')
