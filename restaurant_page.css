@@ -1,4 +1,4 @@
-.upper_div {
+ .upper_div {
   display: flex;
   height: 40px;
   background-color: green;
@@ -10,11 +10,11 @@
 }
 
 .restaurant_image {
-  height: 150px;
+  height: 200px;
   width: 100%;
   background-image: url("https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg");
-  background-size: contain;
   background-repeat: no-repeat;
+   background-size: 100% 100%;
 }
 
 .image_container {
@@ -54,4 +54,20 @@
    Offset the position correctly with
    minus half of the width and minus half of the height
   */
+}
+
+#circle_container {
+  margin-left: 5%;
+}
+
+div.outer-circle {
+  display: inline-block;
+}
+
+.restaurant_title_container {
+  margin-left: 5%;
+}
+
+.row.address {
+  margin-left: 2%;
 }
