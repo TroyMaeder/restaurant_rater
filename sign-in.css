@@ -1,0 +1,23 @@
+#title {
+  padding-top: 20%;
+  font-size: 50px;
+  text-align: center;
+}
+
+.sign_in_button_container {
+  display: flex;
+  margin-bottom: 5%;
+}
+
+.btn-large {
+  width: 73%;
+  margin: auto;
+}
+
+.row.input_container {
+  width: 80%;
+}
+
+#user_container {
+  margin-top: 40%;
+}
