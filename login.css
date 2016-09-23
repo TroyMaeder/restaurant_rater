@@ -3,8 +3,9 @@
   font-size: 50px;
   text-align: center;
 }
+/*title is duplicated*/
 
-#login_container {
+#login_wrapper {
   margin-top: 60%;
 }
 

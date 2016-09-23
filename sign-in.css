@@ -3,6 +3,7 @@
   font-size: 50px;
   text-align: center;
 }
+/*title is duplicated*/
 
 .sign_in_button_container {
   display: flex;
@@ -14,10 +15,10 @@
   margin: auto;
 }
 
-.row.input_container {
+.row.user_details_container {
   width: 80%;
 }
 
-#user_container {
-  margin-top: 40%;
+#user_wrapper {
+  margin-top: 30%;
 }
