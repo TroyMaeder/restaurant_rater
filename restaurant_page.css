@@ -1,0 +1,57 @@
+.upper_div {
+  display: flex;
+  height: 40px;
+  background-color: green;
+}
+
+.restaurant_name {
+  margin: auto;
+  text-align: center;
+}
+
+.restaurant_image {
+  height: 150px;
+  width: 100%;
+  background-image: url("https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.image_container {
+  display: flex;
+  padding: 9px;
+}
+
+.restaurant_image {
+  margin: auto;
+}
+
+.outer-circle {
+  background: #385a94;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  /*
+   Child elements with absolute positioning will be
+   positioned relative to this div
+  */
+}
+
+.inner-circle {
+  position: absolute;
+  background: #a9aaab;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  /*
+   Put top edge and left edge in the center
+  */
+  top: 50%;
+  left: 50%;
+  margin: -5px 0px 0px -5px;
+  /*
+   Offset the position correctly with
+   minus half of the width and minus half of the height
+  */
+}
