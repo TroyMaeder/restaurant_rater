@@ -1,0 +1,24 @@
+#title {
+  padding-top: 20%;
+  font-size: 50px;
+  text-align: center;
+}
+/*title is duplicated*/
+
+.sign_in_button_container {
+  display: flex;
+  margin-bottom: 5%;
+}
+
+.btn-large {
+  width: 73%;
+  margin: auto;
+}
+
+.row.user_details_container {
+  width: 80%;
+}
+
+#user_wrapper {
+  margin-top: 30%;
+}

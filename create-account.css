@@ -1,0 +1,31 @@
+#title {
+  margin-top: 10%;
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 0;
+}
+/*title is duplicated*/
+
+#user_wrapper {
+  margin-top: 40%;
+}
+
+.create_acc_container {
+  display: flex;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.btn-large {
+  width: 73%;
+  margin: auto;
+}
+
+.row.user_details_container {
+  width: 80%;
+  margin-bottom: 0;
+}
+
+input[type=text] {
+  margin: 0;
+}
