@@ -91,7 +91,7 @@ hr {
 .row.address_container {
   display: flex;
   height: 86px;
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
 .col.s9.address {
@@ -112,6 +112,7 @@ p {
 
 .col.s3 {
   height: 86px;
+  height: 104%;
   background-image: url("http://seono.co.uk/wp-content/uploads/2014/10/google-maps-walking-route-edit.png");
 }
 
@@ -142,13 +143,12 @@ p {
 
 .row.navigation_footer {
   position: fixed;
-  background-color: #29a329;
+  background-color: #006666;
   padding: 6px 0 3px 0;
   margin-bottom: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
-  z-index:1000;
 }
 
 .material-icons.footer {
