@@ -1,3 +1,7 @@
+#whole_wrapper {
+  margin: 8px;
+}
+
 .upper_div {
   display: flex;
   height: 40px;
@@ -5,21 +9,22 @@
   color: #FFF;
   font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
   font-size: 16px;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+}
 
 .restaurant_name {
   margin: auto;
-  text-align: center; }
+  text-align: center;
+}
 
-.restaurant_image {
+.restaurant_image img {
   height: 200px;
   width: 100%;
-  background-image: url("https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%; }
+}
 
 .restaurant_image {
-  margin: auto; }
+  margin: auto;
+}
 
 .restaurant_title {
   font-size: 22px;
@@ -29,10 +34,12 @@
   padding-top: 3%;
   font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #000000; }
+  color: #000000;
+}
 
 #restaurant_container {
-  background-color: #FFF; }
+  background-color: #FFF;
+}
 
 .outer-circle {
   background: #589442;
@@ -64,10 +71,12 @@
 
 #circle_container {
   margin-left: 5%;
-  padding-bottom: 3%; }
+  padding-bottom: 3%;
+}
 
 div.outer-circle {
-  display: inline-block; }
+  display: inline-block;
+}
 
 hr {
   border: 0;
@@ -76,12 +85,14 @@ hr {
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); }
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
 
 .row.address_container {
   display: flex;
   height: 86px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}
 
 .col.s9.address {
   font-size: 14px;
@@ -92,32 +103,55 @@ hr {
   padding-top: 10px;
   padding-left: 20px;
   padding-bottom: 2px;
-  line-height: 1.2; }
+  line-height: 1.2;
+}
 
 p {
-  padding-bottom: 3px; }
+  padding-bottom: 3px;
+}
 
 .col.s3 {
   height: 86px;
-  background-image: url("http://seono.co.uk/wp-content/uploads/2014/10/google-maps-walking-route-edit.png"); }
+  background-image: url("http://seono.co.uk/wp-content/uploads/2014/10/google-maps-walking-route-edit.png");
+}
 
 .row.s {
-  display: flex; }
+  display: flex;
+}
 
 .col.s10.website {
   border: 1px;
   color: #589442;
   margin: auto;
   padding-left: 0px;
-  padding-top: 8px; }
+  margin-bottom: 36px;
+  padding-top: 8px;
+  margin-left: 14px;
+}
 
 .ratings {
   border: 1px;
   border-style: dotted;
-  height: 200px; }
+  height: 200px;
+}
 
 .col.s1.material-icons {
   padding-top: 8px;
-  color: #589442; }
+  color: #589442;
+}
 
-/*# sourceMappingURL=restaurant_page.css.map */
+.row.navigation_footer {
+  position: fixed;
+  background-color: #29a329;
+  padding: 6px 0 3px 0;
+  margin-bottom: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index:1000;
+}
+
+.material-icons.footer {
+  padding: 1% 4% 0 4%;
+  color: white;
+}
