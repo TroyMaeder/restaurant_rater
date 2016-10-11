@@ -1,19 +1,22 @@
 doctype html
+link(type='text/css', rel='stylesheet', href='materialize.css', media='screen,projection')
 html
   head
     meta(charset='utf-8')
-    title insights_intake
+    title restaurant_rater
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(type='text/css', rel='stylesheet', href='materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='restaurant_page.css')
   body
     .upper_div
       .restaurant_name
-        | Sushi Samba
+        |  #{tgi}
     .restaurant_image
+      img(src=tgi_pic)
     #restaurant_container
       .restaurant_title
-        | Sushi Samba
+        | #{tgi}
       #circle_container
         .outer-circle
           .inner-circle
@@ -28,8 +31,39 @@ html
     hr
     .row.address_container
       .col.s9.address
-        | 100 Shoreditch High Street, London E1 6JQ
-        p Neighbourgood: Shoreditch
+        | #{tgi_address}
+        p Neighbourgood: #{tgi_neighbourhood}
+      .col.s3
+    hr
+    .row.s
+      div
+        i.col.s1.material-icons language
+      .col.s10.website
+        | Visit Website
+    .upper_div
+      .restaurant_name
+        |  #{gauchos}
+    .restaurant_image
+      img(src=gauchos_pic)
+    #restaurant_container
+      .restaurant_title
+        | #{gauchos}
+      #circle_container
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+    hr
+    .row.address_container
+      .col.s9.address
+        | #{gauchos_address}
+        p Neighbourgood: #{gauchos_neighbourhood}
       .col.s3
     hr
     .row.s
@@ -39,3 +73,4 @@ html
         | Visit Website
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='../public/js/materialize.min.js')
