@@ -91,7 +91,7 @@ hr {
 .row.address_container {
   display: flex;
   height: 86px;
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
 .col.s9.address {
