@@ -1,5 +1,5 @@
-body {
-  margin: 12px; 
+#whole_wrapper {
+  margin: 8px;
 }
 
 .upper_div {
@@ -138,4 +138,20 @@ p {
 .col.s1.material-icons {
   padding-top: 8px;
   color: #589442;
+}
+
+.row.navigation_footer {
+  position: fixed;
+  background-color: #29a329;
+  padding: 6px 0 3px 0;
+  margin-bottom: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index:1000;
+}
+
+.material-icons.footer {
+  padding: 1% 4% 0 4%;
+  color: white;
 }
