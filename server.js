@@ -19,6 +19,12 @@ const restaurants = [
     address: '60A Charlotte St',
     neighbourhood: 'Piccadilly Square',
   },
+  {
+    name: 'Sushi Samba',
+    picture: 'https://b.zmtcdn.com/data/pictures/6/6107336/90de72609f27b3ef482c0afe6dff50b8_featured_v2.jpg',
+    address: 'Heron Tower, 110 Bishopsgate',
+    neighbourhood: 'City of London',
+  },
 ];
 
 app.get('/', (req, res) => {
@@ -32,6 +38,10 @@ app.get('/', (req, res) => {
       gauchos: restaurants[1].name,
       gauchos_address: restaurants[1].address,
       gauchos_neighbourhood: restaurants[1].neighbourhood,
+      sushi_samba_pic: restaurants[2].picture,
+      sushi_samba: restaurants[2].name,
+      sushi_samba_address: restaurants[2].address,
+      sushi_samba_neighbourhood: restaurants[2].neighbourhood,
     });
   }
 });
