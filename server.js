@@ -5,6 +5,7 @@ const app = express();
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public/css`));
+app.use(express.static(`${__dirname}/public/js`));
 
 const restaurants = [
   {
@@ -46,25 +47,19 @@ app.get('/', (req, res) => {
   }
 });
 
-//
-// app.get('/restaurants', (req, res) => {
-//   if (res.statusCode === 200) {
-//     res.render('restaurants',
-//       { picture: restaurants[0].picture,
-//         name: restaurants[0].name,
-//         picture2: restaurants[1].picture,
-//         name2: restaurants[1].name,
-//     });
-//   }
-// });
-//
-// app.get('/restaurant', (req, res) => {
-//   if (res.statusCode === 200) {
-//     res.render('restaurants',
-//       { picture: restaurants[0].picture,
-//         name: restaurants[0].name,
-//     });
-//   }
-// });
+app.get('/search', (req, res) => {
+  if (res.statusCode === 200) {
+    // res.send('I am the server and you are sending...' + req.originalUrl);
+    res.render('search');
+  }
+});
+
+app.get('/search/:query', (req, res) => {
+  if (res.statusCode === 200) {
+    console.log('asdf', req.params.query);
+    res.end();
+    // res.send('I am the server and you are sending...' + req.originalUrl);
+  }
+});
 
 app.listen(8080);
