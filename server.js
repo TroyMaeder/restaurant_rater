@@ -56,7 +56,7 @@ app.get('/search', (req, res) => {
 
 app.get('/search/:query', (req, res) => {
   if (res.statusCode === 200) {
-    console.log('asdf', req.params.query);
+    console.log(req.params.query);
     res.end();
     // res.send('I am the server and you are sending...' + req.originalUrl);
   }

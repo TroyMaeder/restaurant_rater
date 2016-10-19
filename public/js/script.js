@@ -3,7 +3,6 @@ document.getElementById('user_input').addEventListener('keyup', function() {
   const input = document.getElementById('user_input').value;
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log('asdf', xhr.response);
     }
   };
   xhr.open('GET', '/search/' + input, true);
