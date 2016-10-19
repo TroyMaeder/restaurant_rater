@@ -2,10 +2,30 @@ const express = require('express');
 
 const app = express();
 
+const fs = require('fs');
+
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public/css`));
 app.use(express.static(`${__dirname}/public/js`));
+
+function retrieveWords(restaurantList, userInput) {
+  var suggestedRestaurants = [];
+  for (var i = 0; i < restaurantList.length; i++) {
+    if (restaurantList[i].search(userInput) === 0 && userInput.length > 2) {
+      suggestedRestaurants.push(restaurantList[i]);
+    }
+  }
+  return suggestedRestaurants;
+}
+
+fs.readFile(`${__dirname}/london_restaurants.txt`, 'utf8', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  londonRestaurants = data.split('\n');
+});
+
 
 const restaurants = [
   {
@@ -49,16 +69,15 @@ app.get('/', (req, res) => {
 
 app.get('/search', (req, res) => {
   if (res.statusCode === 200) {
-    // res.send('I am the server and you are sending...' + req.originalUrl);
     res.render('search');
   }
 });
 
 app.get('/search/:query', (req, res) => {
   if (res.statusCode === 200) {
-    console.log(req.params.query);
-    res.end();
-    // res.send('I am the server and you are sending...' + req.originalUrl);
+    let userInput = req.params.query
+    var restaurantResults = retrieveWords(londonRestaurants, userInput);
+    res.end(JSON.stringify(restaurantResults));
   }
 });
 
