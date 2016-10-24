@@ -1,4 +1,4 @@
-var london_restaurants = [
+const london_restaurants = [
   {
     "restaurant": {
       "R": {
