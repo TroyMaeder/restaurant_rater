@@ -18,5 +18,4 @@ document.getElementById('user_input').addEventListener('keyup', function() {
       xhr.send();
     }
   }
-
 });
