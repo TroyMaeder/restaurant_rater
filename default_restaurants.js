@@ -1,4 +1,4 @@
-const restaurants = [
+module.exports = [
   {
     name: 'TGI Fridays',
     picture: 'https://b.zmtcdn.com/data/pictures/chains/4/6100234/2c141df6ab0b59ed90a08084264a423b_featured_v2.jpg',

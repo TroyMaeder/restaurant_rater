@@ -1,5 +1,4 @@
-var london_restaurants = [
-  {
+  [{
     "restaurant": {
       "R": {
         "res_id": 113537
@@ -300,25 +299,3 @@ var london_restaurants = [
     }
   }
 ]
-
-function retrieveWords(restaurantList, userInput) {
-  var suggestedRestaurants = [];
-  for (var i = 0; i < restaurantList.length; i++) {
-    if (restaurantList[i].restaurant.name.search(userInput) === 0) {
-      suggestedRestaurants.push(restaurantList[i].restaurant.name);
-    }
-  }
-  return suggestedRestaurants;
-}
-
-function esJavaScript(list, userInput) {
-  const res = list.filter(function(value) {
-    if (value.restaurant.name.search(userInput) === 0) {
-      return value.restaurant.name;
-    }
-  });
-
-  return res[0].restaurant.name;
-}
-
-console.log(esJavaScript(london_restaurants, 'Puff'));
