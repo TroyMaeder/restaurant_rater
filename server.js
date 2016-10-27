@@ -5,7 +5,7 @@ const app = express();
 const restaurants = require('./default_restaurants');
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/rr");
+mongoose.connect("mongodb://localhost/restaurant_rater");
 
 var Schema = mongoose.Schema;
 var restaurantSchema = new Schema({
@@ -13,14 +13,16 @@ var restaurantSchema = new Schema({
         name: String
     }
 });
+
+
 var Restaurant = mongoose.model('Restaurant', restaurantSchema);
-Restaurant.find({ 'restaurant.name': 'Pizza Di Rocco' }, function (err, restaurant) {
+Restaurant.find({ 'restaurant.name': 'Puffizza' }, function (err, restaurant) {
     console.log('err', err);
     console.log('restaurant', restaurant);
 });
-
-//var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
-//rest.save();
+// console.log(Restaurant.modelName);
+// var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
+// rest.save();
 
 
 /*
