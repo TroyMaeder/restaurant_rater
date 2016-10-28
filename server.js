@@ -7,23 +7,6 @@ const restaurants = require('./default_restaurants');
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost/restaurant_rater");
 
-var Schema = mongoose.Schema;
-var restaurantSchema = new Schema({
-    restaurant: {
-        name: String
-    }
-});
-
-
-var Restaurant = mongoose.model('Restaurant', restaurantSchema);
-Restaurant.find({ 'restaurant.name': 'Puffizza' }, function (err, restaurant) {
-    console.log('err', err);
-    console.log('restaurant', restaurant);
-});
-// console.log(Restaurant.modelName);
-// var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
-// rest.save();
-
 
 /*
 {
@@ -78,25 +61,6 @@ app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public/css`));
 app.use(express.static(`${__dirname}/public/js`));
 
-//const db = mongoose.connect('mongodb://127.0.0.1:27017/restaurant_rater');
-
-
-    /*
-    console.log('errrrrrrrrrrrrr', err);
-    console.log('dbbbbbbbbbbbbbb', db);
-  if(err) {
-    return console.dir(err);
-  }
-
-  var collection = db.collection('restaurants');
-
-  collection.find().toArray(function(err, kittens) {
-        console.log(kittens)
-    });
-});
-*/
-
-
 app.get('/', (req, res) => {
   if (res.statusCode === 200) {
     res.render('restaurant_page',
@@ -116,16 +80,43 @@ app.get('/', (req, res) => {
   }
 });
 
+var Schema = mongoose.Schema;
+var restaurantSchema = new Schema({
+    restaurant: {
+        name: String
+    }
+});
+
+
+var Restaurant = mongoose.model('Restaurant', restaurantSchema);
+// Restaurant.find({ 'restaurant.name': 'Puffizza' }, function (err, restaurant) {
+//     console.log('restaurant: ', restaurant[0].restaurant.name);
+// });
+
+// Restaurant.find({ "restaurant.name": /.*Puff.*/i }, { "restaurant.name": 1 }, function (err, restaurant) {
+//   console.log(restaurant);
+// })
+// console.log(Restaurant.modelName);
+// var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
+// rest.save();
+
 app.get('/search', (req, res) => {
   if (res.statusCode === 200) {
     res.render('search');
   }
 });
 
+const restaurantResults = [];
+
 app.get('/search/:query', (req, res) => {
   if (res.statusCode === 200) {
-    let userInput = req.params.query
-    var restaurantResults = retrieveWords(londonRestaurants, userInput);
+    let userInput = `.*${req.params.query}.*`;
+    let regexp = new RegExp(userInput, "i");
+
+    Restaurant.find({ "restaurant.name": regexp }, { "restaurant.name": 1 }, function (err, restaurant) {
+      restaurantResults.push(restaurant[0].restaurant.name)
+    })
+    
     res.end(JSON.stringify(restaurantResults));
   }
 });

@@ -4,8 +4,8 @@ document.getElementById('user_input').addEventListener('keyup', function() {
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       const arr = JSON.parse(xhr.response);
+      console.log(arr);
       for (let i = 0; i < arr.length; i++) {
-        console.log(arr[0]);
         document.getElementById(`restaurant${i}`).innerHTML = arr[i]
       }
     }
