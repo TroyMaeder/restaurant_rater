@@ -5,56 +5,8 @@ const app = express();
 const restaurants = require('./default_restaurants');
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/restaurant_rater");
 
-
-/*
-{
-	"_id" : ObjectId("580e6925e32d58af64571f7b"),
-	"restaurant" : {
-		"R" : {
-			"res_id" : 5701978
-		},
-		"apikey" : "39075b374a5c0d9ee98fcc8e52d0a07c",
-		"id" : "5701978",
-		"name" : "Pizza Di Rocco",
-		"url" : "https://www.zomato.com/abudhabi/pizza-di-rocco-al-dhafrah?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-		"location" : {
-			"address" : "Near Corner of Salam and Al Falah Street (9th Street), Salam Street, Al Dhafrah, Abu Dhabi",
-			"locality" : "Al Dhafrah",
-			"city" : "Abu Dhabi",
-			"city_id" : 57,
-			"latitude" : "24.4852540000",
-			"longitude" : "54.3821740000",
-			"zipcode" : "",
-			"country_id" : 214
-		},
-		"cuisines" : "Italian, Pizza",
-		"average_cost_for_two" : 150,
-		"price_range" : 3,
-		"currency" : "AED",
-		"offers" : [ ],
-		"thumb" : "https://b.zmtcdn.com/data/pictures/8/5701978/70c5c8c2688faedeb2ecd3b0f1c5dc55_featured_v2.jpg",
-		"user_rating" : {
-			"aggregate_rating" : "4.3",
-			"rating_text" : "Very Good",
-			"rating_color" : "5BA829",
-			"votes" : "417"
-		},
-		"photos_url" : "https://www.zomato.com/abudhabi/pizza-di-rocco-al-dhafrah/photos#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-		"menu_url" : "https://www.zomato.com/abudhabi/pizza-di-rocco-al-dhafrah/menu#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-		"featured_image" : "https://b.zmtcdn.com/data/pictures/8/5701978/70c5c8c2688faedeb2ecd3b0f1c5dc55.jpg",
-		"has_online_delivery" : 1,
-		"is_delivering_now" : 1,
-		"deeplink" : "zomato://restaurant/5701978",
-		"order_url" : "https://www.zomato.com/abudhabi/pizza-di-rocco-al-dhafrah/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-		"order_deeplink" : "",
-		"has_table_booking" : 0,
-		"events_url" : "https://www.zomato.com/abudhabi/pizza-di-rocco-al-dhafrah/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-		"establishment_types" : [ ]
-	}
-}
-*/
+mongoose.connect('mongodb://localhost/restaurant_rater');
 
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
@@ -80,23 +32,15 @@ app.get('/', (req, res) => {
   }
 });
 
-var Schema = mongoose.Schema;
-var restaurantSchema = new Schema({
-    restaurant: {
-        name: String
-    }
+const Schema = mongoose.Schema;
+const restaurantSchema = new Schema({
+  restaurant: {
+    name: String,
+  },
 });
 
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-var Restaurant = mongoose.model('Restaurant', restaurantSchema);
-// Restaurant.find({ 'restaurant.name': 'Puffizza' }, function (err, restaurant) {
-//     console.log('restaurant: ', restaurant[0].restaurant.name);
-// });
-
-// Restaurant.find({ "restaurant.name": /.*Puff.*/i }, { "restaurant.name": 1 }, function (err, restaurant) {
-//   console.log(restaurant);
-// })
-// console.log(Restaurant.modelName);
 // var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
 // rest.save();
 
@@ -110,13 +54,15 @@ const restaurantResults = [];
 
 app.get('/search/:query', (req, res) => {
   if (res.statusCode === 200) {
-    let userInput = `.*${req.params.query}.*`;
-    let regexp = new RegExp(userInput, "i");
+    const userInput = `.*${req.params.query}.*`;
+    const userInputRegEx = new RegExp(userInput, 'i');
 
-    Restaurant.find({ "restaurant.name": regexp }, { "restaurant.name": 1 }, function (err, restaurant) {
-      restaurantResults.push(restaurant[0].restaurant.name)
-    })
-    
+    Restaurant.find({ 'restaurant.name': userInputRegEx }, { 'restaurant.name': 1 },
+    (err, restaurant) => {
+      if (err) throw err;
+      restaurantResults.push(restaurant[0].restaurant.name);
+    });
+
     res.end(JSON.stringify(restaurantResults));
   }
 });
