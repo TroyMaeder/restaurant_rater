@@ -1,5 +1,6 @@
 const express = require('express');
 const restaurants = require('./models/restaurants');
+const defaultRestaurants = require('./default_restaurants');
 
 const app = express();
 
@@ -11,18 +12,18 @@ app.use(express.static(`${__dirname}/public/js`));
 app.get('/', (req, res) => {
   if (res.statusCode === 200) {
     res.render('restaurant_page',
-    { tgi_pic: restaurants[0].picture,
-      tgi: restaurants[0].name,
-      tgi_address: restaurants[0].address,
-      tgi_neighbourhood: restaurants[0].neighbourhood,
-      gauchos_pic: restaurants[1].picture,
-      gauchos: restaurants[1].name,
-      gauchos_address: restaurants[1].address,
-      gauchos_neighbourhood: restaurants[1].neighbourhood,
-      sushi_samba_pic: restaurants[2].picture,
-      sushi_samba: restaurants[2].name,
-      sushi_samba_address: restaurants[2].address,
-      sushi_samba_neighbourhood: restaurants[2].neighbourhood,
+    { tgi_pic: defaultRestaurants[0].picture,
+      tgi: defaultRestaurants[0].name,
+      tgi_address: defaultRestaurants[0].address,
+      tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
+      gauchos_pic: defaultRestaurants[1].picture,
+      gauchos: defaultRestaurants[1].name,
+      gauchos_address: defaultRestaurants[1].address,
+      gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
+      sushi_samba_pic: defaultRestaurants[2].picture,
+      sushi_samba: defaultRestaurants[2].name,
+      sushi_samba_address: defaultRestaurants[2].address,
+      sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
     });
   }
 });
@@ -46,7 +47,7 @@ app.get('/search/:query', (req, res) => {
   let userInput = req.params.query;
 
   if (userInput.length > 2) {
-    restaurants.findRestaurant(userInput, function(err, restaurants) {
+    restaurants.findRestaurant(userInput, (err, restaurants) => {
       res.end(JSON.stringify(restaurants));
     });
   }
