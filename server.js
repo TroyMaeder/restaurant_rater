@@ -1,12 +1,7 @@
 const express = require('express');
+const restaurants = require('./models/restaurants');
 
 const app = express();
-
-const restaurants = require('./default_restaurants');
-
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/restaurant_rater');
 
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
@@ -32,14 +27,11 @@ app.get('/', (req, res) => {
   }
 });
 
-const Schema = mongoose.Schema;
-const restaurantSchema = new Schema({
-  restaurant: {
-    name: String,
-  },
-});
-
-const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+// const connGroupRestaurans = conn_restaurant_rater.model('GroupRestaurant', new mongoose.Schema({
+//   restaurant: {
+//     name: String,
+//   },
+// }));
 
 // var rest = new Restaurant({ 'restaurant.name': "Troy's Super Deli" });
 // rest.save();
@@ -50,20 +42,13 @@ app.get('/search', (req, res) => {
   }
 });
 
-const restaurantResults = [];
-
 app.get('/search/:query', (req, res) => {
-  if (res.statusCode === 200) {
-    const userInput = `.*${req.params.query}.*`;
-    const userInputRegEx = new RegExp(userInput, 'i');
+  let userInput = req.params.query;
 
-    Restaurant.find({ 'restaurant.name': userInputRegEx }, { 'restaurant.name': 1 },
-    (err, restaurant) => {
-      if (err) throw err;
-      restaurantResults.push(restaurant[0].restaurant.name);
+  if (userInput.length > 2) {
+    restaurants.findRestaurant(userInput, function(err, restaurants) {
+      res.end(JSON.stringify(restaurants));
     });
-
-    res.end(JSON.stringify(restaurantResults));
   }
 });
 
