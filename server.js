@@ -44,11 +44,11 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/search/:query', (req, res) => {
-  let userInput = req.params.query;
+  const userInput = req.params.query;
 
   if (userInput.length > 2) {
-    restaurants.findRestaurant(userInput, (err, restaurants) => {
-      res.end(JSON.stringify(restaurants));
+    restaurants.findRestaurant(userInput, (err, restaurantsData) => {
+      res.end(JSON.stringify(restaurantsData));
     });
   }
 });
