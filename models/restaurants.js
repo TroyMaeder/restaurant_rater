@@ -11,7 +11,7 @@ const Restaurant = connRestaurantRater.model('Restaurant', new mongoose.Schema({
 exports.findRestaurant = function(userInput, callback) {
   const userInputRegEx = new RegExp(userInput, 'i');
 
-  Restaurant.find({ 'restaurant.name': userInputRegEx }, { 'restaurant.name': 1 },
+  Restaurant.find({ 'restaurant.name': userInputRegEx }, { 'restaurant.name': 1, 'restaurant._id': 1 },
   (err, restaurants) => {
     callback(err, restaurants);
   });
