@@ -44,7 +44,6 @@ app.get('/search/:query', (req, res) => {
 
   if (userInput.length > 2) {
     restaurants.findRestaurant(userInput, (err, restaurantsData) => {
-      // console.log(restaurantsData);
       res.end(JSON.stringify(restaurantsData));
     });
   }
@@ -56,10 +55,29 @@ app.get('/review/:restaurantId', (req, res) => {
   });
 });
 
-app.post('/submit_review/:restaurantId', (req, res) => {
+app.get('/submit_review/:restaurantId', (req, res) => {
+  var restaurantId = req.params.restaurantId;
+  console.log(req.query);
+  console.log(restaurantId);
+  res.render('restaurant_page',
+  { tgi_pic: defaultRestaurants[0].picture,
+    tgi: defaultRestaurants[0].name,
+    tgi_address: defaultRestaurants[0].address,
+    tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
+    gauchos_pic: defaultRestaurants[1].picture,
+    gauchos: defaultRestaurants[1].name,
+    gauchos_address: defaultRestaurants[1].address,
+    gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
+    sushi_samba_pic: defaultRestaurants[2].picture,
+    sushi_samba: defaultRestaurants[2].name,
+    sushi_samba_address: defaultRestaurants[2].address,
+    sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
+  });
+
+
   // TODO insert the data into the DB
   /*
-  collection called `restaurants`
+  [wdcollection called `restaurants`
   when you insert into restaurants... an _id for that entry (RESTAURANT) gets generated
 
   called called `reviews`
