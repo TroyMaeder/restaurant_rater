@@ -1,8 +1,3 @@
-document.getElementsByClassName("predicted_restaurant_wrap")[0].addEventListener('click', function() {
-    console.log('hello');
-});
-
-
 document.getElementById('user_input').addEventListener('keyup', function() {
   const xhr = new XMLHttpRequest();
   const input = document.getElementById('user_input').value;

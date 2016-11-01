@@ -51,20 +51,24 @@ app.get('/search/:query', (req, res) => {
 });
 
 app.get('/review/:restaurantId', (req, res) => {
-  res.send('you said: ' + req.params.restaurantId);
-  // TODO res.render the template
-  /*
-  READ UP ON FORMS
-  <form action="/submit_review/$$$" method="post">
-    <input type="hidden" name="rating">
-    <input type="" name="month_visited">
-  </form>
-   */
-  // TODO part of the information that this form sends to the next end-point, is the restaurantId
+  res.render('rate', {
+    restaurantId: req.params.restaurantId,
+  });
 });
 
 app.post('/submit_review/:restaurantId', (req, res) => {
   // TODO insert the data into the DB
+  /*
+  collection called `restaurants`
+  when you insert into restaurants... an _id for that entry (RESTAURANT) gets generated
+
+  called called `reviews`
+  when you insert... an _id for the REVIEW will get generated
+    ... but part of a review is a REFERENCE to the restaurant being reviewewd
+    What's the ref? You could mention the restaurant by name, by address... but that's shit. Use the ID
+
+
+  */
   // TODO redirect somewhere else
 });
 

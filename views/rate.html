@@ -5,7 +5,7 @@
     <title>insights_intake</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../public/css/materialize.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="../public/css/reviews.css">
+    <link type="text/css" rel="stylesheet" href="../public/css/rate.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body>
@@ -37,32 +37,15 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Month visited</label>
-            </div>
-          </div>
-        </form>
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Title</label>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="raters_review">
-      </div>
-
-      <div class="lower_div">
-        <div class="restaurant_name">
-          Submit
-        </div>
-      </div>
+      <form action="/submit_review/">
+        <fieldset>
+          Date visited:<br>
+          <input type="text" name="date_visited"<br>
+          Review:<br>
+          <input type="text" name="review"<br><br>
+          <input type="submit" value="Submit">
+        </fieldset>
+      </form>
     </div>
 
 
