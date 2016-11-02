@@ -5,7 +5,9 @@ document.getElementById('user_input').addEventListener('keyup', function() {
     if (this.readyState === 4 && this.status === 200) {
       const arr = JSON.parse(xhr.response);
       for (let i = 0; i < arr.length; i++) {
-        const link = `<a href="/review/${arr[i]._id}">${arr[i].restaurant.name}</a>`;
+        console.log(arr[i].restaurant.name);
+        const link = `<a href="/review/${arr[i]._id}/${arr[i].restaurant.name}">${arr[i].restaurant.name}</a>`;
+        console.log(link);
         document.getElementById(`restaurant${i}`).innerHTML = link;
       }
     }

@@ -4,7 +4,6 @@ html
     meta(charset='utf-8')
     title insights_intake
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
-    link(type='text/css', rel='stylesheet', href='materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='/rate.css')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
   body
@@ -22,7 +21,7 @@ html
             .circle
             .circle
             .circle
-      form(action='/submit_review/' + restaurantId)
+      form(action='/submit_review/' + restaurantId + '/' + restaurantName)
         fieldset
           | Date visited:
           br
@@ -34,4 +33,3 @@ html
           input(type='submit', value='Submit')
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
-    script(type='text/javascript', src='materialize.min.js')

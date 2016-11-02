@@ -1,6 +1,8 @@
 const express = require('express');
 const restaurants = require('./models/restaurants');
+// const reviews = require('./models/reviews');
 const defaultRestaurants = require('./default_restaurants');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -8,6 +10,17 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public/css`));
 app.use(express.static(`${__dirname}/public/js`));
+
+const connRestaurantReviews = mongoose.createConnection('mongodb://localhost/reviews');
+
+const Review = connRestaurantReviews.model('Review', new mongoose.Schema({
+  review: {
+    restaurant_id: Number,
+    date: String,
+    review: String,
+    name: String,
+  },
+}));
 
 app.get('/', (req, res) => {
   res.render('restaurant_page',
@@ -49,16 +62,19 @@ app.get('/search/:query', (req, res) => {
   }
 });
 
-app.get('/review/:restaurantId', (req, res) => {
+app.get('/review/:restaurantId/:restaurantName', (req, res) => {
   res.render('rate', {
     restaurantId: req.params.restaurantId,
+    restaurantName: req.params.restaurantName,
   });
 });
 
-app.get('/submit_review/:restaurantId', (req, res) => {
-  var restaurantId = req.params.restaurantId;
-  console.log(req.query);
-  console.log(restaurantId);
+app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
+  const restaurantId = req.params.restaurantId;
+  let restaurantName = req.params.restaurantName;
+  const reviewDate = req.query.date_visited;
+  const restaurantReview = req.query.review;
+
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
     tgi: defaultRestaurants[0].name,
@@ -73,6 +89,23 @@ app.get('/submit_review/:restaurantId', (req, res) => {
     sushi_samba_address: defaultRestaurants[2].address,
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
   });
+
+
+saveReview = function(restaurantName1, restaurantId, dateVisited, restaurantReview) {
+  restaurantName1 = new Review({
+    'restaurant_id': restaurantId, 'review.date': dateVisited,
+    'restaurant_review': restaurantReview, 'restaurantName': restaurantName,
+  });
+
+  restaurantName1.save(function (err, restaurant) {
+    if (err) {
+      return console.error(err);
+    }
+      console.log(restaurantName1 + ' is saved!');
+  });
+};
+
+saveReview(restaurantName, restaurantId, reviewDate, restaurantReview)
 
 
   // TODO insert the data into the DB
