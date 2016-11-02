@@ -8,17 +8,16 @@ const app = express();
 
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
-app.use(express.static(`${__dirname}/public/css`));
-app.use(express.static(`${__dirname}/public/js`));
+app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(`${__dirname}/public/js`));
 
 const connRestaurantReviews = mongoose.createConnection('mongodb://localhost/reviews');
 
 const Review = connRestaurantReviews.model('Review', new mongoose.Schema({
   review: {
-    restaurant_id: Number,
+    restaurant_id: mongoose.Schema.ObjectId,
     date: String,
     review: String,
-    name: String,
   },
 }));
 
@@ -71,9 +70,11 @@ app.get('/review/:restaurantId/:restaurantName', (req, res) => {
 
 app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   const restaurantId = req.params.restaurantId;
-  let restaurantName = req.params.restaurantName;
   const reviewDate = req.query.date_visited;
   const restaurantReview = req.query.review;
+  console.log(restaurantReview);
+
+  console.log(restaurantId, ' :restaurantId', reviewDate, ' :reviewDate', restaurantReview, ' :restaurantReview');
 
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
@@ -91,21 +92,24 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   });
 
 
-saveReview = function(restaurantName1, restaurantId, dateVisited, restaurantReview) {
-  restaurantName1 = new Review({
-    'restaurant_id': restaurantId, 'review.date': dateVisited,
-    'restaurant_review': restaurantReview, 'restaurantName': restaurantName,
+saveReview = function(restaurantId, dateVisited, restaurantReview) {
+  const review = new Review({
+    review: {
+      restaurant_id: restaurantId,
+      date: dateVisited,
+      review: restaurantReview,
+    },
   });
 
-  restaurantName1.save(function (err, restaurant) {
+  review.save(function(err, restaurant) {
     if (err) {
       return console.error(err);
     }
-      console.log(restaurantName1 + ' is saved!');
+    console.log(restaurant, ' is saved!');
   });
 };
 
-saveReview(restaurantName, restaurantId, reviewDate, restaurantReview)
+saveReview(restaurantId, reviewDate, restaurantReview)
 
 
   // TODO insert the data into the DB
