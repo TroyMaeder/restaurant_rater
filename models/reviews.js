@@ -4,27 +4,26 @@ const connRestaurantReviews = mongoose.createConnection('mongodb://localhost/rev
 
 const Review = connRestaurantReviews.model('Review', new mongoose.Schema({
   review: {
-    restaurant_id: Number,
+    restaurant_id: mongoose.Schema.ObjectId,
     date: String,
     review: String,
   },
 }));
 
 
-const sushi_samba = new Review({ 'review.date': 'October' });
+exports.saveReview = function(restaurantId, dateVisited, restaurantReview) {
+  const review = new Review({
+    review: {
+      restaurant_id: restaurantId,
+      date: dateVisited,
+      review: restaurantReview,
+    },
+  });
 
-sushi_samba.save(function (err, restaurant) {
-  if (err) {
-    return console.error(err);
-  }
-    console.log(restaurant + ' is saved!');
-});
-
-// exports.saveReview = function(restaurant) {
-//   restaurant.save(function (err, restaurant) {
-//     if (err) {
-//       return console.error(err);
-//     }
-//       console.log(restaurant + ' is saved!');
-//   });
-// };
+  review.save((err, restaurant) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(restaurant, ' is saved!');
+  });
+};
