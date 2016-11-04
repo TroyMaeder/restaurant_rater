@@ -4,6 +4,7 @@ html
     meta(charset='utf-8')
     title insights_intake
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='/css/rate.css')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
   body
@@ -12,24 +13,31 @@ html
         .restaurant_name
           | Sushi Samba
       .wrap
-        .rating_text
-          | Please rate the following
-        .ratings
-          .circle_container
-            .circle
-            .circle
-            .circle
-            .circle
-            .circle
-      form(action='/submit_review/' + restaurantId + '/' + restaurantName)
-        fieldset
-          | Date visited:
-          br
-          input(type='text', name='date_visited', <br='')
-          | Review:
-          br
-          input(type='text', name='review', <br='')
-          br
-          input(type='submit', value='Submit')
-    // Import jQuery before materialize.js
-    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+        form(action='/submit_review/' + restaurantId + '/' + restaurantName)
+          fieldset
+            .rating_text
+              | Please rate the following
+            .ratings
+              .circle_container
+                .circle
+                .circle
+                .circle
+                .circle
+                .circle
+            #form_wrapper
+              .form_info
+                | Date visited:
+              br
+              .form_info
+                .form_input
+                  input(type='text', name='date_visited')
+                  |               Review:
+                br
+                .form_input
+                  input(type='text', name='review', <br='')
+                  br
+                #form_button
+                  input(type='submit', value='Submit')
+      // Import jQuery before materialize.js
+      script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+      script(type='text/javascript', src='/js/materialize.min.js')

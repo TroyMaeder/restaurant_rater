@@ -17,33 +17,43 @@
       </div>
 
       <div class="wrap">
+        <form action="/submit_review/">
+          <fieldset>
+            <div class="rating_text">
+              Please rate the following
+            </div>
 
-        <div class="rating_text">
-          Please rate the following
-        </div>
+            <div class="ratings">
+              <div class="circle_container">
+                <div class="circle">
+                </div>
+                <div class="circle">
+                </div>
+                <div class="circle">
+                </div>
+                <div class="circle">
+                </div>
+                <div class="circle">
+                </div>
+              </div>
+            </div>
 
-        <div class="ratings">
-          <div class="circle_container">
-            <div class="circle">
+          <div id="form_wrapper">
+            <div class="form_info">
+              Date visited:
+            </div><br>
+
+          <div class="form_info">
+            <div class="form_input">
+              <input type="text" name="date_visited">
+              Review:
+            </div><br>
+            <div class="form_input">
+              <input type="text" name="review"<br><br>
             </div>
-            <div class="circle">
-            </div>
-            <div class="circle">
-            </div>
-            <div class="circle">
-            </div>
-            <div class="circle">
-            </div>
+            <input type="submit" value="Submit">
+
           </div>
-        </div>
-      </div>
-      <form action="/submit_review/">
-        <fieldset>
-          Date visited:<br>
-          <input type="text" name="date_visited"<br>
-          Review:<br>
-          <input type="text" name="review"<br><br>
-          <input type="submit" value="Submit">
         </fieldset>
       </form>
     </div>
