@@ -52,6 +52,7 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   const restaurantId = req.params.restaurantId;
   const reviewDate = req.query.date_visited;
   const restaurantReview = req.query.review;
+  const resName = req.params.restaurantName;
 
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
