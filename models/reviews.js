@@ -1,23 +1,17 @@
 const mongoose = require('mongoose');
+const db = require('../db');
 
-const connRestaurantReviews = mongoose.createConnection('mongodb://localhost/reviews');
-
-const Review = connRestaurantReviews.model('Review', new mongoose.Schema({
-  review: {
-    restaurant_id: mongoose.Schema.ObjectId,
-    date: String,
-    review: String,
-  },
+const Review = db.model('Review', new mongoose.Schema({
+  restaurant_id: mongoose.Schema.ObjectId,
+  date: String,
+  review: String,
 }));
-
 
 exports.saveReview = function(restaurantId, dateVisited, restaurantReview) {
   const review = new Review({
-    review: {
-      restaurant_id: restaurantId,
-      date: dateVisited,
-      review: restaurantReview,
-    },
+    restaurant_id: restaurantId,
+    date: dateVisited,
+    review: restaurantReview,
   });
 
   review.save((err, restaurant) => {

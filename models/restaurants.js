@@ -1,8 +1,7 @@
+const db = require('../db');
 const mongoose = require('mongoose');
 
-const connRestaurantRater = mongoose.createConnection('mongodb://localhost/restaurant_rater');
-
-const Restaurant = connRestaurantRater.model('Restaurant', new mongoose.Schema({
+const Restaurant = db.model('Restaurant', new mongoose.Schema({
   restaurant: {
     name: String,
   },

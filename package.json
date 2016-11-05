@@ -22,14 +22,15 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.2.0",
-    "nodemon": "^1.11.0",
-    "passport-facebook": "^2.1.1"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "express": "^4.14.0",
     "jade": "^1.11.0",
     "mongodb": "^2.2.9",
     "mongoose": "^4.6.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "pug": "^2.0.0-beta6",
     "request": "^2.74.0"
   }
