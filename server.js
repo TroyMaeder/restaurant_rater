@@ -13,6 +13,16 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public`));
 
+app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 passport.use(new FacebookStrategy({
   clientID: '1661396180841330',
   clientSecret: 'a940d0f384bce72c1175fee8abc0797b',
@@ -29,7 +39,9 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', {
+  authType: 'reauthenticate',
+}));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
@@ -37,6 +49,12 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRe
     res.redirect('/');
   }
 );
+
+// route for logging out
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
 app.get('/', (req, res) => {
   res.render('restaurant_page',
