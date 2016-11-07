@@ -6,6 +6,7 @@ const User = db.model('User', new mongoose.Schema({
   username: String,
   facebookId: String,
 }));
+
 /*
 { id: '1453603634654104',
  username: undefined,
