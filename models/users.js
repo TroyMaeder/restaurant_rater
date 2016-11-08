@@ -5,6 +5,7 @@ const User = db.model('User', new mongoose.Schema({
   name: String,
   username: String,
   facebookId: String,
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 }));
 
 /*

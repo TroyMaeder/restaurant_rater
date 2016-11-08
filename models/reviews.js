@@ -5,9 +5,10 @@ const Review = db.model('Review', new mongoose.Schema({
   restaurant_id: mongoose.Schema.ObjectId,
   date: String,
   review: String,
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 }));
 
-exports.saveReview = function(restaurantId, dateVisited, restaurantReview) {
+exports.saveReview = (restaurantId, dateVisited, restaurantReview) => {
   const review = new Review({
     restaurant_id: restaurantId,
     date: dateVisited,
