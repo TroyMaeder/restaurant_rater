@@ -15,11 +15,11 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(passport.initialize());
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
@@ -28,8 +28,8 @@ passport.use(new FacebookStrategy({
   clientSecret: 'a940d0f384bce72c1175fee8abc0797b',
   callbackURL: 'http://localhost:8080/auth/facebook/callback',
 },
-  function(accessToken, refreshToken, profile, cb) {
-    users.findOrCreate(profile, function(err, user) {
+  (accessToken, refreshToken, profile, cb) => {
+    users.findOrCreate(profile, (err, user) => {
       if (err) {
         return cb(err);
       }
@@ -44,14 +44,14 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 }));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
+  (req, res) => {
     // Successful authentication, redirect home.
     res.redirect('/');
   }
 );
 
 // route for logging out
-app.get('/logout', function(req, res) {
+app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
@@ -99,7 +99,6 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   const restaurantId = req.params.restaurantId;
   const reviewDate = req.query.date_visited;
   const restaurantReview = req.query.review;
-  const resName = req.params.restaurantName;
 
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
