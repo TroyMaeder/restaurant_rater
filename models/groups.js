@@ -7,10 +7,10 @@ const Group = db.model('Group', new mongoose.Schema({
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 }));
 
-exports.createGroup = (groupName) => {
+exports.createGroup = (groupName, userId) => {
   const newGroup = new Group({
     name: groupName,
-    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    users: [userId],
   });
 
   newGroup.save((err, group) => {

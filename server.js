@@ -6,7 +6,7 @@ const group = require('./models/groups');
 const defaultRestaurants = require('./default_restaurants');
 const FacebookStrategy = require('passport-facebook');
 const passport = require('passport');
-
+const session = require('express-session');
 
 const app = express();
 
@@ -14,7 +14,14 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public`));
 
+// app.use(express.cookieParser());
+// app.use(express.bodyParser());
+// app.use(express.cookieSession());
+app.use(session({
+  secret: 'Django',
+}));
 app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -22,6 +29,9 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
   done(null, user);
+  // users.findById(id, function(err, user) {
+  //   done(err, user);
+  // });
 });
 
 passport.use(new FacebookStrategy({
@@ -121,10 +131,11 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
 });
 
 app.get('/create', (req, res) => {
+  console.log('rrrrrrrr', req.user);
   res.render('create');
 });
 
-app.get('/created/:groupName', (req, res) => {
+app.get('/created/', (req, res) => {
   const groupName = req.query.group_name;
   group.createGroup(groupName);
   res.render('create');
