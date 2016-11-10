@@ -70,12 +70,16 @@ app.get('/', (req, res) => {
     sushi_samba: defaultRestaurants[2].name,
     sushi_samba_address: defaultRestaurants[2].address,
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
-    picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA'
+    picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
   });
 });
 
 app.get('/search', (req, res) => {
   res.render('search');
+});
+
+app.get('/create', (req, res) => {
+  res.render('create');
 });
 
 app.get('/search/:query', (req, res) => {

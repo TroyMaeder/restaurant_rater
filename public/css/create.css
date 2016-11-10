@@ -1,0 +1,15 @@
+#heading {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+#form_container {
+  padding: 15px;
+  font-size: 15px;
+}
+
+input {
+  padding-left: 37%;
+}

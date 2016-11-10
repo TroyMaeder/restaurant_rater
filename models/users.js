@@ -30,7 +30,6 @@ exports.findOrCreate = function(facebookProfile, cb) {
     }
 
     if (userRetrievedFromDb) {
-      console.log(userRetrievedFromDb);
       return cb(null, userRetrievedFromDb);
     }
 
@@ -40,9 +39,9 @@ exports.findOrCreate = function(facebookProfile, cb) {
       facebookId: facebookProfile.id,
     });
 
-    newUser.save(function(err, user) {
-      if (err) {
-        return cb(err);
+    newUser.save((error, user) => {
+      if (error) {
+        return cb(error);
       }
 
       return cb(null, user);
