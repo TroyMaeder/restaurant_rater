@@ -10,12 +10,14 @@ const Group = db.model('Group', new mongoose.Schema({
 exports.createGroup = (groupName) => {
   const newGroup = new Group({
     name: groupName,
+    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   });
 
   newGroup.save((err, group) => {
     if (err) {
       return console.error(err);
     }
+
     console.log(group, ' is saved!');
   });
 };
