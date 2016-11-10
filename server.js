@@ -2,6 +2,7 @@ const express = require('express');
 const restaurants = require('./models/restaurants');
 const reviews = require('./models/reviews');
 const users = require('./models/users');
+const group = require('./models/groups');
 const defaultRestaurants = require('./default_restaurants');
 const FacebookStrategy = require('passport-facebook');
 const passport = require('passport');
@@ -78,11 +79,8 @@ app.get('/search', (req, res) => {
   res.render('search');
 });
 
-app.get('/create', (req, res) => {
-  res.render('create');
-});
-
 app.get('/search/:query', (req, res) => {
+
   const userInput = req.params.query;
 
   if (userInput.length > 2) {
@@ -120,6 +118,16 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   });
 
   reviews.saveReview(restaurantId, reviewDate, restaurantReview);
+});
+
+app.get('/create', (req, res) => {
+  res.render('create');
+});
+
+app.get('/created/:groupName', (req, res) => {
+  const groupName = req.query.group_name;
+  group.createGroup(groupName)
+  res.render('create');
 });
 
 app.listen(8080);
