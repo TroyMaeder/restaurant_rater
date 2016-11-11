@@ -1,12 +1,15 @@
 const express = require('express');
 const restaurants = require('./models/restaurants');
 const reviews = require('./models/reviews');
-const users = require('./models/users');
+const User = require('./models/User');
 const group = require('./models/groups');
 const defaultRestaurants = require('./default_restaurants');
 const FacebookStrategy = require('passport-facebook');
 const passport = require('passport');
 const session = require('express-session');
+const bodyParser = require('body-parser');
+
+require('./db');
 
 const app = express();
 
@@ -14,24 +17,22 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public`));
 
-// app.use(express.cookieParser());
-// app.use(express.bodyParser());
-// app.use(express.cookieSession());
 app.use(session({
   secret: 'Django',
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(bodyParser.json());
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
-  // users.findById(id, function(err, user) {
-  //   done(err, user);
-  // });
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 
 passport.use(new FacebookStrategy({
@@ -40,11 +41,10 @@ passport.use(new FacebookStrategy({
   callbackURL: 'http://localhost:8080/auth/facebook/callback',
 },
   (accessToken, refreshToken, profile, cb) => {
-    users.findOrCreate(profile, (err, user) => {
+    User.findOrCreate(profile, (err, user) => {
       if (err) {
         return cb(err);
       }
-
       return cb(err, user);
     });
   }
@@ -56,7 +56,6 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
-    // Successful authentication, redirect home.
     res.redirect('/create');
   }
 );
@@ -90,7 +89,6 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/search/:query', (req, res) => {
-
   const userInput = req.params.query;
 
   if (userInput.length > 2) {
@@ -131,7 +129,6 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
 });
 
 app.get('/create', (req, res) => {
-  console.log('rrrrrrrr', req.user);
   res.render('create');
 });
 
