@@ -22,40 +22,36 @@ const userSchema = new mongoose.Schema({
  _json: { name: 'Diana Berce', id: '1453603634654104' } }
 */
 
-// userSchema.statics.findOrCreate = function(facebookProfile, cb) {
-//   console.log('inside find or Create');
-//   return this.findOne({ facebookId: facebookProfile.id }, function(err, userRetrievedFromDb) {
-//     console.log('------', userRetrievedFromDb);
-//     if (err) {
-//       return cb(err);
-//     }
-//
-//     if (userRetrievedFromDb) {
-//       return cb(null, userRetrievedFromDb);
-//     }
-//
-//     const newUser = new this({
-//       name: facebookProfile.displayName,
-//       username: facebookProfile.username,
-//       facebookId: facebookProfile.id,
-//     });
-//
-//     newUser.save((error, user) => {
-//       if (error) {
-//         return cb(error);
-//       }
-//
-//       return cb(null, user);
-//     });
-//   });
-// };
+userSchema.statics.findOrCreate = function(facebookProfile, cb) {
+  return this.findOne({ facebookId: facebookProfile.id }, (err, userRetrievedFromDb) => {
+    if (err) {
+      return cb(err);
+    }
+
+    if (userRetrievedFromDb) {
+      return cb(null, userRetrievedFromDb);
+    }
+
+    const newUser = new this({
+      name: facebookProfile.displayName,
+      username: facebookProfile.username,
+      facebookId: facebookProfile.id,
+    });
+
+    newUser.save((error, user) => {
+      if (error) {
+        return cb(error);
+      }
+
+      return cb(null, user);
+    });
+  });
+};
 
 const User = mongoose.model('User', userSchema);
 
-User.findOrCreate = function(facebookProfile, cb) {
-  console.log('inside find or Create');
-  User.findOne({ facebookId: facebookProfile.id }, function(err, userRetrievedFromDb) {
-    console.log('------', userRetrievedFromDb);
+User.findOrCreate = (facebookProfile, cb) => {
+  User.findOne({ facebookId: facebookProfile.id }, (err, userRetrievedFromDb) => {
     if (err) {
       return cb(err);
     }
