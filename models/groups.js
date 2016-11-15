@@ -16,7 +16,6 @@ groupSchema.statics.createGroup = (groupName, userId) => {
     if (err) {
       return console.error(err);
     }
-
     console.log(group, ' is saved!');
   });
 };

@@ -62,7 +62,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRe
 
 // route for logging out
 app.get('/logout', (req, res) => {
-  req.logout();
+  req.logout()
   res.redirect('/');
 });
 
@@ -129,12 +129,16 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
 });
 
 app.get('/create', (req, res) => {
-  res.render('create');
+  const userId = req.user.id;
+  res.render('create', {
+    user_id: userId,
+  });
 });
 
-app.get('/created/', (req, res) => {
+app.get('/created/:userId', (req, res) => {
   const groupName = req.query.group_name;
-  group.createGroup(groupName);
+  const userId = req.params;
+  group.createGroup(groupName, userId);
   res.render('create');
 });
 

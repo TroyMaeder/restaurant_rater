@@ -11,7 +11,7 @@ html
     #heading
       | Create your RR group
     #form_container
-      form(action='/created/')
+      form(action='/created/' + user_id)
         | Enter your groups name
         input(type='text', name='group_name')
         input#submit_form(type='submit', value='Submit')
