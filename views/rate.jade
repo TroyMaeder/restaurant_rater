@@ -36,8 +36,11 @@ html
                 .form_input
                   input(type='text', name='review', <br='')
                   br
+                  #review_counter
+                    input(type='text', name='ratings_five', value='0')
                 #form_button
                   input(type='submit', value='Submit')
       // Import jQuery before materialize.js
       script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
       script(type='text/javascript', src='/js/materialize.min.js')
+      script(src='/js/rate.js')
