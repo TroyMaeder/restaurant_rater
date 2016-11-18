@@ -7,14 +7,15 @@ const groupSchema = new mongoose.Schema({
 });
 
 groupSchema.statics.createGroup = (groupName, userId) => {
+
   const newGroup = new Group({
     name: groupName,
-    users: [userId],
+    users: [userId]
   });
 
   newGroup.save((err, group) => {
     if (err) {
-      return console.error(err);
+      return console.error('asdf', err);
     }
     console.log(group, ' is saved!');
   });

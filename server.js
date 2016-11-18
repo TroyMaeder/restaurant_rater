@@ -13,6 +13,8 @@ require('./db');
 
 const app = express();
 
+console.log(restaurants);
+
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public`));
@@ -137,7 +139,7 @@ app.get('/create', (req, res) => {
 
 app.get('/created/:userId', (req, res) => {
   const groupName = req.query.group_name;
-  const userId = req.params;
+  const userId = req.params.userId;
   group.createGroup(groupName, userId);
   res.render('create');
 });
