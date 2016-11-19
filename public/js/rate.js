@@ -1,27 +1,75 @@
 var count = 0;
-var review = 0;
+var count1 = 0;
+var count2 = 0;
+var count3 = 0;
+var count4 = 0;
+var ratingCounter = 0;
 
-function evenNumber() {
-	document.getElementsByClassName('circle')[0].style.backgroundColor = "white";
-	review = review - 1;
-	document.getElementById('review_counter').innerHTML = review;
+function evenNumber(elementIndex) {
+	document.getElementsByClassName('circle')[elementIndex].style.backgroundColor = "white";
+	ratingCounter = ratingCounter - 1;
+	document.getElementById('review_counter').innerHTML = ratingCounter;
 
 }
 
-function oddNumber() {
-	document.getElementsByClassName('circle')[0].style.backgroundColor = "#589442";
-	review = review + 1;
-	document.getElementById('review_counter').innerHTML = review;
+function oddNumber(elementIndex) {
+	document.getElementsByClassName('circle')[elementIndex].style.backgroundColor = "#589442";
+	ratingCounter = ratingCounter + 1;
+	document.getElementById('review_counter').innerHTML = ratingCounter;
 }
-
 
 document.getElementsByClassName('circle')[0].addEventListener('click', function() {
 	if (count % 2 === 0) {
-        oddNumber();
+        oddNumber(0);
     }
     else {
-        evenNumber();
+        evenNumber(0);
     }
 
     count++;
 });
+
+document.getElementsByClassName('circle')[1].addEventListener('click', function() {
+	if (count1 % 2 === 0) {
+        oddNumber(1);
+    }
+    else {
+        evenNumber(1);
+    }
+
+    count1++;
+});
+
+document.getElementsByClassName('circle')[2].addEventListener('click', function() {
+	if (count2 % 2 === 0) {
+        oddNumber(2);
+    }
+    else {
+        evenNumber(2);
+    }
+
+    count2++;
+});
+
+document.getElementsByClassName('circle')[3].addEventListener('click', function() {
+	if (count3 % 2 === 0) {
+        oddNumber(3);
+    }
+    else {
+        evenNumber(3);
+    }
+
+    count3++;
+});
+
+document.getElementsByClassName('circle')[4].addEventListener('click', function() {
+	if (count4 % 2 === 0) {
+        oddNumber(4);
+    }
+    else {
+        evenNumber(4);
+    }
+
+    count4++;
+});
+
