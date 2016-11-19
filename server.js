@@ -40,7 +40,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new FacebookStrategy({
   clientID: '1661396180841330',
   clientSecret: 'a940d0f384bce72c1175fee8abc0797b',
-  callbackURL: 'http://localhost:8080/auth/facebook/callback',
+  callbackURL: 'http://192.168.1.130:8080/auth/facebook/callback',
 },
   (accessToken, refreshToken, profile, cb) => {
     User.findOrCreate(profile, (err, user) => {

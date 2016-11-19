@@ -8,12 +8,13 @@ const userReview = new mongoose.Schema({
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
-userReview.statics.saveReview = (restaurantId, restaurantRating, dateVisited, restaurantReview) => {
+userReview.statics.saveReview = (restaurantId, restaurantRating, dateVisited, restaurantReview, userId) => {
   const review = new Review({
     restaurant_id: restaurantId,
     rating: restaurantRating,
     date: dateVisited,
     review: restaurantReview,
+    users: [userId],
   });
 
   review.save((err, restaurant) => {
