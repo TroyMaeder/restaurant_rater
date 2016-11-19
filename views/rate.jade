@@ -27,19 +27,21 @@ html
             #form_wrapper
               .form_info
                 | Date visited:
-              br
+                input.datepicker(type='date' name='date_visited')
+                br
               .form_info
                 .form_input
-                  input(type='text', name='date_visited')
-                  |               Review:
+                  | Review:
                 br
                 .form_input
                   input(type='text', name='review', <br='')
                   br
-                  #review_counter
-                    input(type='text', name='ratings_five', value='0')
-                #form_button
-                  input(type='submit', value='Submit')
+                  .form_input
+                    #review_counter
+                      input(type='text', name='ratings_five')
+                  #form_button
+                    input(type='submit', value='Submit')
+
       // Import jQuery before materialize.js
       script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
       script(type='text/javascript', src='/js/materialize.min.js')

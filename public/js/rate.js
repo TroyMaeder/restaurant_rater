@@ -8,14 +8,14 @@ var ratingCounter = 0;
 function evenNumber(elementIndex) {
 	document.getElementsByClassName('circle')[elementIndex].style.backgroundColor = "white";
 	ratingCounter = ratingCounter - 1;
-	document.getElementById('review_counter').innerHTML = ratingCounter;
+	document.getElementsByName('ratings_five')[0].value = ratingCounter;
 
 }
 
 function oddNumber(elementIndex) {
 	document.getElementsByClassName('circle')[elementIndex].style.backgroundColor = "#589442";
 	ratingCounter = ratingCounter + 1;
-	document.getElementById('review_counter').innerHTML = ratingCounter;
+	document.getElementsByName('ratings_five')[0].value = ratingCounter;
 }
 
 document.getElementsByClassName('circle')[0].addEventListener('click', function() {
@@ -73,3 +73,9 @@ document.getElementsByClassName('circle')[4].addEventListener('click', function(
     count4++;
 });
 
+document.getElementsByName('ratings_five')[0].value = 'jjjj';
+
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
