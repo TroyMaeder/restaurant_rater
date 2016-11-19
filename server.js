@@ -111,8 +111,7 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   const restaurantId = req.params.restaurantId;
   const reviewDate = req.query.date_visited;
   const restaurantReview = req.query.review;
-  console.log(req.query, 'qqqqqqqqqq')
-  console.log(req.params, 'ppppppppp')
+  const restaurantRating = req.query.ratings_five;
 
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
@@ -129,7 +128,9 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
   });
 
-  reviews.saveReview(restaurantId, reviewDate, restaurantReview);
+  console.log(restaurantId, ': restaurantId', reviewDate, ': reviewDate', restaurantReview, ': restaurantReview', restaurantRating, ': restaurantRating')
+
+  reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview);
 });
 
 app.get('/create', (req, res) => {

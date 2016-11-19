@@ -2,15 +2,16 @@ const mongoose = require('mongoose');
 
 const userReview = new mongoose.Schema({
   restaurant_id: mongoose.Schema.ObjectId,
-  rating: Number,
+  rating: String,
   date: String, 
   review: String,
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
-userReview.statics.saveReview = (restaurantId, dateVisited, restaurantReview) => {
+userReview.statics.saveReview = (restaurantId, restaurantRating, dateVisited, restaurantReview) => {
   const review = new Review({
     restaurant_id: restaurantId,
+    rating: restaurantRating,
     date: dateVisited,
     review: restaurantReview,
   });
