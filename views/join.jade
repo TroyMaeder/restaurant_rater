@@ -6,12 +6,15 @@ html
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
-    link(type='text/css', rel='stylesheet', href='/css/loginFB.css')
+    link(type='text/css', rel='stylesheet', href='/css/create.css')
   body
-    #title
-      | Log in through Facebook
-    form(action='/auth/facebook')
-      input.waves-effect.waves-light.btn(type='submit', value='Facebook')
+    #heading
+      | Join Group
+    #form_container
+      form(action='/created/' + user_id)
+        | Enter your groups name
+        input(type='text', name='group_name')
+        input#submit_form(type='submit', value='Submit')
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')

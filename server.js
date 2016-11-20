@@ -13,8 +13,6 @@ require('./db');
 
 const app = express();
 
-console.log(restaurants);
-
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
 app.use(express.static(`${__dirname}/public`));
@@ -22,6 +20,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use(session({
   secret: 'Django',
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,17 +57,20 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
-    res.redirect('/');
+    res.redirect('/restaurant_page');
   }
 );
 
-// route for logging out
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/loginFB');
 });
 
 app.get('/', (req, res) => {
+  res.render('loginFB');
+});
+
+app.get('/restaurant_page', (req, res) => {
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
     tgi: defaultRestaurants[0].name,
@@ -132,14 +134,38 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
   });
 
-  console.log(restaurantId, ': restaurantId', reviewDate, ': reviewDate', restaurantReview, ': restaurantReview', restaurantRating, ': restaurantRating')
-
   reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview);
 });
 
+app.get('/', (req, res) => {
+  res.render('loginFB');
+});
+
 app.get('/create', (req, res) => {
-  const userId = req.user.id;
-  res.render('create', {
+  const userId = req.user._id;
+
+  group.findOne({ users: userId }, function(err, person) {
+    if (err) {
+       return console.error(err);
+    }
+
+    if (person) {
+      res.render('loginFB');
+    } else {
+      res.render('search');
+    }
+  })
+});
+
+//   res.render('create', {
+//     user_id: userId,
+//   });
+
+
+app.get('/join', (req, res) => {
+  const userId = req.user._id;
+
+  res.render('join', {
     user_id: userId,
   });
 });
