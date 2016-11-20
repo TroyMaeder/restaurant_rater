@@ -40,7 +40,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new FacebookStrategy({
   clientID: '1661396180841330',
   clientSecret: 'a940d0f384bce72c1175fee8abc0797b',
-  callbackURL: 'http://192.168.1.130:8080/auth/facebook/callback',
+  callbackURL: 'http://localhost:8080/auth/facebook/callback',
 },
   (accessToken, refreshToken, profile, cb) => {
     User.findOrCreate(profile, (err, user) => {
@@ -58,15 +58,18 @@ app.get('/auth/facebook', passport.authenticate('facebook', {
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
-    res.redirect('/create');
+    res.redirect('/');
   }
 );
 
 // route for logging out
 app.get('/logout', (req, res) => {
   req.logout()
-  res.redirect('/');
+  res.redirect('/loginFB');
 });
+
+// link to invite friends to app through facebook
+http://www.facebook.com/dialog/send?app_id=1661396180841330&link=http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html&redirect_uri=https://www.domain.com/
 
 app.get('/', (req, res) => {
   res.render('restaurant_page',
@@ -88,6 +91,10 @@ app.get('/', (req, res) => {
 
 app.get('/search', (req, res) => {
   res.render('search');
+});
+
+app.get('/loginFB', (req, res) => {
+  res.render('loginFB');
 });
 
 app.get('/search/:query', (req, res) => {
