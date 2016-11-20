@@ -68,9 +68,6 @@ app.get('/logout', (req, res) => {
   res.redirect('/loginFB');
 });
 
-// link to invite friends to app through facebook
-http://www.facebook.com/dialog/send?app_id=1661396180841330&link=http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html&redirect_uri=https://www.domain.com/
-
 app.get('/', (req, res) => {
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
