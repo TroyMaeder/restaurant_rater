@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userReview = new mongoose.Schema({
   restaurant_id: mongoose.Schema.ObjectId,
   rating: String,
-  date: String, 
+  date: String,
   review: String,
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });

@@ -62,7 +62,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRe
 );
 
 app.get('/logout', (req, res) => {
-  req.logout()
+  req.logout();
   res.redirect('/loginFB');
 });
 
@@ -144,37 +144,31 @@ app.get('/', (req, res) => {
 app.get('/create', (req, res) => {
   const userId = req.user._id;
 
-  group.findOne({ users: userId }, function(err, person) {
+  group.findOne({ users: userId }, (err, person) => {
     if (err) {
-       return console.error(err);
+       console.log(err, 'there is a error inside find one');
     }
 
     if (person) {
-      res.render('loginFB');
+      res.render('invite_friends');
     } else {
-      res.render('search');
+      res.render('create_group');
     }
-  })
+  });
 });
 
-//   res.render('create', {
-//     user_id: userId,
-//   });
-
-
-app.get('/join', (req, res) => {
-  const userId = req.user._id;
-
-  res.render('join', {
+app.get('/invite_friends/groupName', (req, res) => {
+  res.render('search', {
     user_id: userId,
   });
 });
 
-app.get('/created/:userId', (req, res) => {
+app.get('/create_group', (req, res) => {
   const groupName = req.query.group_name;
-  const userId = req.params.userId;
+  const userId = req.user._id;
+
   group.createGroup(groupName, userId);
-  res.render('create');
+  res.render('invite_friends');
 });
 
 app.listen(8080);

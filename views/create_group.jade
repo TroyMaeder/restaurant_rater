@@ -9,9 +9,9 @@ html
     link(type='text/css', rel='stylesheet', href='/css/create.css')
   body
     #heading
-      | Join Group
+      | Create your RR group
     #form_container
-      form(action='/created/' + user_id)
+      form(action='/create_group')
         | Enter your groups name
         input(type='text', name='group_name')
         input#submit_form(type='submit', value='Submit')
