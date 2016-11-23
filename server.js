@@ -141,7 +141,7 @@ app.get('/', (req, res) => {
   res.render('loginFB');
 });
 
-app.get('/create', (req, res) => {
+app.get('/group', (req, res) => {
   const userId = req.user._id;
 
   group.findOne({ users: userId }, (err, person) => {
@@ -157,13 +157,11 @@ app.get('/create', (req, res) => {
   });
 });
 
-app.get('/invite_friends/groupName', (req, res) => {
-  res.render('search', {
-    user_id: userId,
-  });
+app.get('/unfinished_route', (req, res) => {
+  res.render('search');
 });
 
-app.get('/create_group', (req, res) => {
+app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
   const userId = req.user._id;
 
