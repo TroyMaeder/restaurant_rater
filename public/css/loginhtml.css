@@ -1,0 +1,35 @@
+body {
+  background: url("https://static.pexels.com/photos/5317/food-salad-restaurant-person.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#title {
+  text-align: center;
+  font-size: 150px;
+  color: white;
+  margin-top: 25%;
+  font-family: "Courier New", Courier, monospace;
+  font-style: 900;
+}
+
+#outer_div {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-large {
+  height: 130px !important;
+  width: 380px !important;
+  font-size: 50px;
+  display: inline-block;
+  margin-top: 20%;
+  background-color: #7FFFD4 !important;
+  color: black;
+}
+
+.btn {
+  background-color: #3B5998;
+}
