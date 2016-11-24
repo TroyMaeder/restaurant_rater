@@ -11,10 +11,7 @@ html
     #heading
       | Invite friends
     #form_container
-      form(action='/unfinished_route')
-        | Enter your groups name
-        input(type='text', name='group_name')
-        input#submit_form(type='submit', value='Submit')
+      a(href='mailto:?body=tisbody&subject=thisbethesubject') invite friends
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')
