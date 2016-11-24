@@ -6,15 +6,14 @@ html
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
-    link(type='text/css', rel='stylesheet', href='/css/create.css')
+    link(type='text/css', rel='stylesheet', href='/css/create_group.css')
   body
     #heading
-      | Create your RR group
+      | New Group
     #form_container
       form(action='/invite_friends')
-        | Enter your groups name
         input(type='text', name='group_name')
-        input#submit_form(type='submit', value='Submit')
+        input.waves-effect.waves-light.btn(type='submit', value='Create')
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')
