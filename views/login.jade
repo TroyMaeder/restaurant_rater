@@ -6,12 +6,15 @@ html
     link(type='text/css', rel='stylesheet', href='../public/css/search.css')
     link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Reem+Kufi', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lobster', rel='stylesheet')
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='/css/login.css')
   body
     #title
-      | Restaurant Rater
+      | Restaurant
+    #title2 Rater
     form(action='/auth/facebook')
       #outer_div
         i.fa.fa-facebook
-        input.waves-effect.waves-light.btn-large(type='submit', value='Log In')
+        input.waves-effect.waves-light.btn-large(type='submit', value='Log in with Facebook')

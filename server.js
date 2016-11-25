@@ -143,6 +143,7 @@ app.get('/', (req, res) => {
 
 app.get('/group', (req, res) => {
   const userId = req.user._id;
+  console.log(userId, '-----------------')
 
   group.findOne({ users: userId }, (err, person) => {
     if (err) {
@@ -150,6 +151,7 @@ app.get('/group', (req, res) => {
     }
 
     if (person) {
+      console.log(person, ' -----------person')
       res.render('invite_friends');
     } else {
       res.render('create_group');

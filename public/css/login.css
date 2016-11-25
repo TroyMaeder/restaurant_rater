@@ -1,18 +1,48 @@
 body {
-  background: url("https://static.pexels.com/photos/5317/food-salad-restaurant-person.jpg") no-repeat center center fixed;
+  background: url("https://images.pexels.com/photos/119637/pexels-photo-119637.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
+/*body {
+  background: url("https://images.pexels.com/photos/8291/food-tomato.jpg?w=1260&h=750&auto=compress&cs=tinysrgb") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+/*body {
+  background: url("https://images.pexels.com/photos/8363/pexels-photo.jpg?w=1260&h=750&auto=compress&cs=tinysrgb") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
 #title {
   text-align: center;
   font-size: 150px;
   color: white;
-  margin-top: 25%;
-  font-family: "Courier New", Courier, monospace;
-  font-style: 900;
+  margin-top: 55%;
+  font-family: 'Reem Kufi', sans-serif;
+  letter-spacing: 10px;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#title2 {
+  text-align: center;
+  font-size: 150px;
+  color: white;
+  margin-top: 0;
+  font-family: 'Reem Kufi', sans-serif;
+  letter-spacing: 10px;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  padding-top: -20;
 }
 
 #outer_div {
@@ -21,12 +51,40 @@ body {
 }
 
 .btn-large {
+  border-radius: 14px;
   height: 130px !important;
-  width: 380px !important;
-  font-size: 50px;
-  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+  width: 680px !important;
+  font-size: 47px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   display: inline-block;
-  margin-top: 20%;
+  margin-top: 15%;
   background-color: #3B5998 !important;
   color: white;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#title:first-letter {
+  font-size: 150px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 10px;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#title:first-letter {
+  font-size: 150px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 10px;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#title2:first-letter {
+  font-size: 150px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 10px;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
