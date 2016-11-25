@@ -92,7 +92,7 @@ app.get('/search', (req, res) => {
   res.render('search');
 });
 
-app.get('/login1', (req, res) => {
+app.get('/login', (req, res) => {
   res.render('login');
 });
 
