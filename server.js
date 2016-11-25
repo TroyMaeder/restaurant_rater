@@ -63,11 +63,11 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRe
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/loginFB');
+  res.redirect('/login');
 });
 
 app.get('/', (req, res) => {
-  res.render('loginFB');
+  res.render('login');
 });
 
 app.get('/restaurant_page', (req, res) => {
@@ -92,8 +92,8 @@ app.get('/search', (req, res) => {
   res.render('search');
 });
 
-app.get('/loginFB', (req, res) => {
-  res.render('loginFB');
+app.get('/login1', (req, res) => {
+  res.render('login');
 });
 
 app.get('/search/:query', (req, res) => {
@@ -138,7 +138,7 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('loginFB');
+  res.render('login');
 });
 
 app.get('/group', (req, res) => {
