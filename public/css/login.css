@@ -54,13 +54,14 @@ body {
   border-radius: 14px;
   height: 130px !important;
   width: 680px !important;
-  font-size: 47px;
+  font-size: 42px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   display: inline-block;
   margin-top: 15%;
   background-color: #3B5998 !important;
   color: white;
+  letter-spacing: 5px;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

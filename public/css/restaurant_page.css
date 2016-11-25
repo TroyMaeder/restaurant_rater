@@ -5,7 +5,7 @@
 .upper_div {
   display: flex;
   height: 40px;
-  background-color: #0086b3;
+  background-color: #589442;
   color: #FFF;
   font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
   font-size: 16px;
@@ -42,7 +42,7 @@
 }
 
 .outer-circle {
-  background: #0086b3;
+  background: #589442;
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -97,7 +97,7 @@ hr {
 .col.s9.address {
   font-size: 14px;
   margin: auto;
-  color: #0086b3;
+  color: #589442;
   -webkit-font-smoothing: antialiased;
   font-weight: 500;
   padding-top: 10px;
@@ -122,7 +122,7 @@ p {
 
 .col.s10.website {
   border: 1px;
-  color: #0086b3;
+  color: #589442;
   margin: auto;
   padding-left: 0px;
   margin-bottom: 12px;
@@ -138,7 +138,7 @@ p {
 
 .col.s1.material-icons {
   padding-top: 8px;
-  color: #0086b3;
+  color: #589442;
 }
 
 .row.navigation_footer {
