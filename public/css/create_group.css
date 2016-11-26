@@ -1,18 +1,51 @@
+body {
+  background: url("https://images.pexels.com/photos/139259/pexels-photo-139259.jpeg?w=1260&h=750&auto=compress&cs=tinysrgbhttps://images.pexels.com/photos/139259/pexels-photo-139259.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #heading {
-  margin-top: 13%;
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 20px;
-  color: #26a69a;,
+  margin-top: 10%;
+  margin-left: 10%;
+  color: green;
+  font-size: 35px;
+  font-family: 'Reem Kufi', sans-serif;
+  letter-spacing: 2px;
+}
+
+#heading a {
+  color: green;
+  font-size: 35px;
+  font-family: 'Reem Kufi', sans-serif;
+  letter-spacing: 2px;
+}
+
+#heading:first-letter {
+  color: green;
+  font-size: 35px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 2px;
+
+}
+
+#heading a:first-letter {
+  color: green;
+  font-size: 35px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 2px;
+
 }
 
 #form_container {
+  margin-left: 6%;
   padding: 15px;
   font-size: 15px;
 }
 
-input {
-  border: 2px;
-  font-size: 20px;
-  background-color: #589442;
+input[type="text"] {
+  font-size: 13px;
+  font-family: 'Reem Kufi', sans-serif;
+  letter-spacing: 1px;
 }
