@@ -143,7 +143,6 @@ app.get('/', (req, res) => {
 
 app.get('/group', (req, res) => {
   const userId = req.user._id;
-  console.log(userId, '-----------------')
 
   group.findOne({ users: userId }, (err, person) => {
     if (err) {
@@ -151,9 +150,10 @@ app.get('/group', (req, res) => {
     }
 
     if (person) {
-      console.log(person, ' -----------person')
+      console.log(person, '--------------')
       res.render('invite_friends');
     } else {
+      console.log('noooooooooooooo')
       res.render('create_group');
     }
   });
@@ -163,12 +163,16 @@ app.get('/unfinished_route', (req, res) => {
   res.render('search');
 });
 
+app.get('/accept_invite', (req, res) => {
+  res.render('accept_invite');
+});
+
 app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
   const userId = req.user._id;
 
   group.createGroup(groupName, userId);
-  res.render('invite_friends');
+  res.render('accept_invite');
 });
 
 app.listen(8080);

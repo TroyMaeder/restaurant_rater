@@ -1,29 +1,21 @@
-body {
-  background: url("https://images.pexels.com/photos/139259/pexels-photo-139259.jpeg?w=1260&h=750&auto=compress&cs=tinysrgbhttps://images.pexels.com/photos/139259/pexels-photo-139259.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 #heading {
   margin-top: 10%;
   margin-left: 10%;
-  color: green;
+  color: #1c7d73;
   font-size: 35px;
   font-family: 'Reem Kufi', sans-serif;
   letter-spacing: 2px;
 }
 
 #heading a {
-  color: green;
+  color: #1c7d73;
   font-size: 35px;
   font-family: 'Reem Kufi', sans-serif;
   letter-spacing: 2px;
 }
 
 #heading:first-letter {
-  color: green;
+  color: #1c7d73;
   font-size: 35px;
   font-family: 'Lobster', cursive;
   letter-spacing: 2px;
@@ -31,7 +23,7 @@ body {
 }
 
 #heading a:first-letter {
-  color: green;
+  color: #1c7d73;
   font-size: 35px;
   font-family: 'Lobster', cursive;
   letter-spacing: 2px;

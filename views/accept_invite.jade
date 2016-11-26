@@ -6,12 +6,14 @@ html
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
+    link(href='https://fonts.googleapis.com/css?family=Reem+Kufi', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lobster', rel='stylesheet')
     link(type='text/css', rel='stylesheet', href='/css/create_group.css')
   body
     #heading
-      | Invite friends
+      | do you want to join this group yo!
     #form_container
-      a(href='mailto:?body=http://localhost:8080/accept_invite&subject=thisbethesubject') invite friends
+      input.waves-effect.waves-light.btn(type='submit', value='Join group with FB')
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')
