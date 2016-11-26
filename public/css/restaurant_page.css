@@ -1,5 +1,5 @@
 body {
-  background-color: #E7DFDD;
+  background-color: #E4E0DC;
 }
 
 #whole_wrapper {
@@ -7,7 +7,9 @@ body {
 }
 
 .upper_div {
+  letter-spacing: 1px;
   display: flex;
+  font-weight: 600;
   height: 40px;
   background-color: #589442;
   color: #FFF;
@@ -31,14 +33,17 @@ body {
 }
 
 .restaurant_title {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-size: 22px;
   margin-left: 5%;
   border: 1px;
   height: 49px;
   padding-top: 3%;
-  font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #000000;
+  color: #333333;
 }
 
 #restaurant_container {
@@ -46,7 +51,7 @@ body {
 }
 
 .outer-circle {
-  background: #589442;
+  background: #008000;
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -99,9 +104,10 @@ hr {
 }
 
 .col.s9.address {
+  font-weight: 500;
   font-size: 14px;
   margin: auto;
-  color: #589442;
+  color: #006600;
   -webkit-font-smoothing: antialiased;
   font-weight: 500;
   padding-top: 10px;
@@ -125,8 +131,10 @@ p {
 }
 
 .col.s10.website {
+  font-weight: 500;
+  letter-spacing: 1px;
   border: 1px;
-  color: #589442;
+  color: #006600;
   margin: auto;
   padding-left: 0px;
   margin-bottom: 12px;
@@ -142,7 +150,7 @@ p {
 
 .col.s1.material-icons {
   padding-top: 8px;
-  color: #589442;
+  color: #006600;
 }
 
 .row.navigation_footer {
