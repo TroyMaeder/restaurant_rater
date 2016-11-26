@@ -1,7 +1,3 @@
-body {
-  background-color: #f2f2f2;
-}
-
 #whole_wrapper {
   margin: 8px;
 }
@@ -33,7 +29,6 @@ body {
 .restaurant_title {
   font-size: 22px;
   margin-left: 5%;
-  margin-top: 2%;
   border: 1px;
   height: 49px;
   padding-top: 3%;
@@ -117,7 +112,7 @@ p {
 
 .col.s3 {
   height: 86px;
-  height: 100%;
+  height: 104%;
   background-image: url("http://seono.co.uk/wp-content/uploads/2014/10/google-maps-walking-route-edit.png");
 }
 
@@ -159,15 +154,4 @@ p {
 .material-icons.footer {
   padding: 1% 4% 0 4%;
   color: white;
-}
-
-.container {
-  background-color: white;
-  margin-top: 2%;
-  width: 100%;
-}
-
-.site_address {
-  background-color: white;
-  margin-top: 2%;
 }
