@@ -20,6 +20,20 @@ groupSchema.statics.createGroup = (groupName, userId) => {
   });
 };
 
+//TODO make it so you add group with id not name
+//TODO make it so there's no duplicates
+
+groupSchema.statics.saveUserToGroup = (groupName, userId, callback) => {
+  Group.findOne({name: groupName}, function(err, group) {
+    if (err) {
+      callback(err);
+    } else {
+      group.users.push(userId);
+      group.save();
+    }
+  });
+};
+
 const Group = mongoose.model('Group', groupSchema);
 
 module.exports = Group;

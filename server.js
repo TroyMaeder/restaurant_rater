@@ -51,15 +51,26 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-app.get('/auth/facebook', passport.authenticate('facebook', {
-  authType: 'reauthenticate',
-}));
+app.get('/auth/facebook', (req, res) => {
+  passport.authenticate('facebook', {
+    authType: 'reauthenticate',
+    state: req.query.group_name,
+  })(req, res);
+});
 
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
-  (req, res) => {
-    res.redirect('/restaurant_page');
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
+  const groupName = req.query.state;
+  const userId = req.user._id;
+
+  if (groupName) {
+    group.saveUserToGroup(groupName, userId, (err) => {
+      console.log(err);
+      // res.redirect('/error');
+    });
   }
-);
+
+  res.redirect('/restaurant_page');
+});
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -150,21 +161,21 @@ app.get('/group', (req, res) => {
     }
 
     if (person) {
-      console.log(person, '--------------')
-      res.render('invite_friends');
+      res.render('invite_friends', {
+        groupName: person.name,
+      });
     } else {
-      console.log('noooooooooooooo')
       res.render('create_group');
     }
   });
 });
 
-app.get('/unfinished_route', (req, res) => {
-  res.render('search');
-});
-
 app.get('/accept_invite', (req, res) => {
-  res.render('accept_invite');
+  const groupName = req.query.group_name;
+
+  res.render('accept_invite', {
+    groupName,
+  });
 });
 
 app.get('/invite_friends', (req, res) => {
