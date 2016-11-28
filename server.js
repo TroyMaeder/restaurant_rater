@@ -52,7 +52,6 @@ passport.use(new FacebookStrategy({
 ));
 
 app.get('/auth/facebook', (req, res) => {
-  console.log(req.query, '------')
   passport.authenticate('facebook', {
     authType: 'reauthenticate',
     state: req.query.group_name,
@@ -61,10 +60,7 @@ app.get('/auth/facebook', (req, res) => {
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
   const groupName = req.query.state;
-  console.log(req.query, 'oooooooooooooo')
-
   const userId = req.user._id;
-  console.log(userId, 'idddddd');
 
   if (groupName) {
     group.saveUserToGroup(groupName, userId, (err) => {
@@ -159,14 +155,14 @@ app.get('/', (req, res) => {
 app.get('/group', (req, res) => {
   const userId = req.user._id;
 
-  group.findOne({ users: userId }, (err, person) => {
+  group.findOne({ users: userId }, (err, group) => {
     if (err) {
        console.log(err, 'there is a error inside find one');
     }
 
-    if (person) {
+    if (group) {
       res.render('invite_friends', {
-        groupName: person.name,
+        groupName: group.name,
       });
     } else {
       res.render('create_group', {
