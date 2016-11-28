@@ -15,10 +15,9 @@ html
     #form_container
     form(action='/auth/facebook')
       input(type='hidden', name='group_name', value=groupName)
-      p #{groupName}
       #outer_div
         i.fa.fa-facebook
-        input.waves-effect.waves-light.btn-large(type='submit', value='Join group with FB')
+        input.waves-effect.waves-light.btn-large(type='submit', value='Join #{groupName} with FB')
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')

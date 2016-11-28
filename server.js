@@ -52,6 +52,7 @@ passport.use(new FacebookStrategy({
 ));
 
 app.get('/auth/facebook', (req, res) => {
+  console.log(req.query, '------')
   passport.authenticate('facebook', {
     authType: 'reauthenticate',
     state: req.query.group_name,
@@ -60,7 +61,10 @@ app.get('/auth/facebook', (req, res) => {
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
   const groupName = req.query.state;
+  console.log(req.query, 'oooooooooooooo')
+
   const userId = req.user._id;
+  console.log(userId, 'idddddd');
 
   if (groupName) {
     group.saveUserToGroup(groupName, userId, (err) => {
@@ -182,7 +186,6 @@ app.get('/accept_invite', (req, res) => {
 
 app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
-  console.log(groupName, ' ----------');
   const userId = req.user._id;
 
   group.createGroup(groupName, userId);
