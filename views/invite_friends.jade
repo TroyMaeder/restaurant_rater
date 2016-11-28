@@ -11,7 +11,7 @@ html
     #heading
       | Invite friends
     #form_container
-      a(href='mailto:?body=http://localhost:8080/accept_invite?group_name=#{groupName}&subject=thisbethesubject') INVITE
+      a(href='mailto:?body=http://localhost:8080/accept_invite?group_name=' + groupName + '&subject=thisbethesubject') INVITE
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')

@@ -165,7 +165,9 @@ app.get('/group', (req, res) => {
         groupName: person.name,
       });
     } else {
-      res.render('create_group');
+      res.render('create_group', {
+        userId,
+      });
     }
   });
 });
@@ -180,10 +182,13 @@ app.get('/accept_invite', (req, res) => {
 
 app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
+  console.log(groupName, ' ----------');
   const userId = req.user._id;
 
   group.createGroup(groupName, userId);
-  res.render('accept_invite');
+  res.render('invite_friends', {
+    groupName,
+  });
 });
 
 app.listen(8080);
