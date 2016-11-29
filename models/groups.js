@@ -24,7 +24,7 @@ groupSchema.statics.createGroup = (groupName, userId) => {
 //TODO make it so there's no duplicates
 
 groupSchema.statics.saveUserToGroup = (groupName, userId, callback) => {
-  Group.findOne({name: groupName}, function(err, group) {
+  Group.findOne({name: groupName}, (err, group) => {
     if (err) {
       callback(err);
     } else {

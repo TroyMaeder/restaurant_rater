@@ -184,9 +184,20 @@ app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
   const userId = req.user._id;
 
-  group.createGroup(groupName, userId);
-  res.render('invite_friends', {
-    groupName,
+  group.findOne({name: groupName}, (err, group1) => {
+    if (err) {
+      console.log(err);
+    }
+
+    if (group1) {
+      res.render('search');
+    } else {
+      group.createGroup(groupName, userId);
+
+      res.render('invite_friends', {
+        groupName,
+      });
+    }
   });
 });
 
