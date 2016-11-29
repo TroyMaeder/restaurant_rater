@@ -14,7 +14,7 @@ html
       | do you want to join this group yo!
     #form_container
     form(action='/auth/facebook')
-      input(type='hidden', name='group_name', value=groupName)
+      input(type='hidden', name='group_id', value=groupObjectId)
       #outer_div
         i.fa.fa-facebook
         input.waves-effect.waves-light.btn-large(type='submit', value='Join #{groupName} with FB')

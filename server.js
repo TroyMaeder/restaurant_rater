@@ -54,23 +54,24 @@ passport.use(new FacebookStrategy({
 app.get('/auth/facebook', (req, res) => {
   passport.authenticate('facebook', {
     authType: 'reauthenticate',
-    state: req.query.group_name,
+    state: req.query.group_id,
   })(req, res);
 });
 
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
-  const groupName = req.query.state;
-  const userId = req.user._id;
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  failureRedirect: '/login' }), (req, res) => {
+    const groupId = req.query.state;
+    const userId = req.user._id;
 
-  if (groupName) {
-    group.saveUserToGroup(groupName, userId, (err) => {
-      console.log(err);
-      // res.redirect('/error');
-    });
-  }
+    if (groupId) {
+      group.saveUserToGroup(groupId, userId, (err) => {
+        console.log(err);
+        // res.redirect('/error');
+      });
+    }
 
-  res.redirect('/restaurant_page');
-});
+    res.redirect('/restaurant_page');
+  });
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -155,14 +156,15 @@ app.get('/', (req, res) => {
 app.get('/group', (req, res) => {
   const userId = req.user._id;
 
-  group.findOne({ users: userId }, (err, group) => {
+  group.findOne({ users: userId }, (err, usersGroup) => {
     if (err) {
        console.log(err, 'there is a error inside find one');
     }
 
-    if (group) {
+    if (usersGroup) {
       res.render('invite_friends', {
-        groupName: group.name,
+        groupName: usersGroup.name,
+        groupObjectId: usersGroup._id,
       });
     } else {
       res.render('create_group', {
@@ -173,10 +175,10 @@ app.get('/group', (req, res) => {
 });
 
 app.get('/accept_invite', (req, res) => {
-  const groupName = req.query.group_name;
+  const groupObjectId = req.query.group_id;
 
   res.render('accept_invite', {
-    groupName,
+    groupObjectId,
   });
 });
 
@@ -184,7 +186,7 @@ app.get('/invite_friends', (req, res) => {
   const groupName = req.query.group_name;
   const userId = req.user._id;
 
-  group.findOne({name: groupName}, (err, group1) => {
+  group.findOne({ name: groupName }, (err, group1) => {
     if (err) {
       console.log(err);
     }
