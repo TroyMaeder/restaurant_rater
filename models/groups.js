@@ -27,7 +27,7 @@ groupSchema.statics.saveUserToGroup = (groupId, userId, callback) => {
     if (err) {
       callback(err);
     } else {
-      group.users.push(userId);
+      group.users.addToSet(userId);
       group.save();
     }
   });
