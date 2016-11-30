@@ -180,8 +180,7 @@ app.get('/save_group', (req, res) => {
 
   group.createGroup(groupName, userId);
 
-  res.redirect('/group', {
-  });
+  return res.redirect('/group');
 });
 
 app.get('/invite_friends', (req, res) => {
