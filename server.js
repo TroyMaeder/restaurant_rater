@@ -167,10 +167,25 @@ app.get('/group', (req, res) => {
         groupObjectId: usersGroup._id,
       });
     } else {
-      res.render('create_group', {
+      res.render('group', {
         userId,
       });
     }
+  });
+});
+
+app.get('/save_group', (req, res) => {
+  const groupName = req.query.group_name;
+  const userId = req.user._id;
+
+  group.createGroup(groupName, userId);
+
+  res.redirect('/group', {
+  });
+});
+
+app.get('/invite_friends', (req, res) => {
+  res.render('invite_friends', {
   });
 });
 
@@ -179,32 +194,6 @@ app.get('/accept_invite', (req, res) => {
 
   res.render('accept_invite', {
     groupObjectId,
-  });
-});
-
-app.get('/invite_friends', (req, res) => {
-  const groupName = req.query.group_name;
-  const userId = req.user._id;
-
-  //TODO split this into 2 routes: one that saves the group; one that displays the INVITE FRIENDS form
-  //TODO the save route DOESN'T display anything. It saves, then redirects to the INVITE FRIENDS route
-  group.findOne({ name: groupName }, (err, group1) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(group1, '--------------');
-    if (group1) {
-      res.render('search');
-    } else {
-      console.log('inside save group function');
-      group.createGroup(groupName, userId);
-      const groupObjectId = group1._id;
-
-      res.render('invite_friends', {
-        groupName,
-        // groupObjectId,
-      });
-    }
   });
 });
 
