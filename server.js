@@ -73,13 +73,17 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     res.redirect('/restaurant_page');
   });
 
+app.get('/', (req, res) => {
+  res.render('login');
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/login');
-});
-
-app.get('/', (req, res) => {
-  res.render('login');
 });
 
 app.get('/restaurant_page', (req, res) => {
@@ -102,10 +106,6 @@ app.get('/restaurant_page', (req, res) => {
 
 app.get('/search', (req, res) => {
   res.render('search');
-});
-
-app.get('/login', (req, res) => {
-  res.render('login');
 });
 
 app.get('/search/:query', (req, res) => {
@@ -150,8 +150,8 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
   reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview, userId);
 });
 
-app.get('/', (req, res) => {
-  res.render('login');
+app.get('/profile', (req, res) => {
+  res.render('profile');
 });
 
 app.get('/group', (req, res) => {
@@ -159,7 +159,7 @@ app.get('/group', (req, res) => {
 
   group.findOne({ users: userId }, (err, usersGroup) => {
     if (err) {
-       console.log(err, 'there is a error inside find one');
+       console.log(err, 'there is a error inside findOne');
     }
 
     if (usersGroup) {
