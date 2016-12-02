@@ -87,6 +87,18 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/restaurant_page', (req, res) => {
+
+  // reviews.find().distinct('restaurant_id', (error, ids) => {
+  //   const uniqueRestaurantsIds = ids;
+  //   console.log(uniqueRestaurantsIds);
+    restaurants.findOne({ _id: '5810b374b2c73b0a7c8f41f8' }, (error, story) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(story.restaurant.name);
+    });
+  // });
+
   res.render('restaurant_page',
   { tgi_pic: defaultRestaurants[0].picture,
     tgi: defaultRestaurants[0].name,
