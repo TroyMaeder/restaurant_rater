@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const groupSchema = new mongoose.Schema({
   name: String,
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
+  // reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 });
 
 groupSchema.statics.createGroup = (groupName, userId) => {

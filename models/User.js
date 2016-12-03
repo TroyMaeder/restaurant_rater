@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   username: String,
   facebookId: String,
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
+  // reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 });
 
 /*

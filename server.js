@@ -1,6 +1,6 @@
 const express = require('express');
 const Restaurant = require('./models/restaurants');
-const reviews = require('./models/reviews');
+const Reviews = require('./models/reviews');
 const User = require('./models/User');
 const group = require('./models/groups');
 const defaultRestaurants = require('./default_restaurants');
@@ -87,19 +87,40 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/restaurant_page', (req, res) => {
-  reviews.find().distinct('restaurant_id', (error, ids) => {
-    const uniqueRestaurantsIds = ids;
-    Restaurant.find({ _id: uniqueRestaurantsIds }, (err, restaurants) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(restaurants);
-        console.log('0', restaurants[0].restaurant.location.locality);
-      }
+  // Reviews.find().populate('users').distinct('restaurant_id', (error, ids) => {
+  // Reviews.find((error, ids) => {
+  // Reviews.find().populate('users').exec((error, ids) => {
+  //   let reviews = ids;
+  //   console.log(1, reviews);
+  //   console.log(2, reviews[0].users);
+  //   console.log('////////////////////////////////////////////////////');
+  // return;
+  //   const uniqueRestaurantsIds   = ids;
+  //   Restaurant.find({ _id: uniqueRestaurantsIds }, (err, restaurants) => {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       // console.log('0', restaurants[0].restaurant.location.locality);
+  //     }
+  const userId = req.user._id;
+    group.findOne({ users: { $in: [userId] }}, (err, group) => {
+      Reviews.find({ users: { $in: group.users }}, (err, reviews) => {
+        Restaurant.find({ _id: { $in: reviews.restaurant_id } }, (err, restaurants) => {
+          console.log(restaurants, '-------');
+        });
+      });
+    });
 
-
+      // Story
+      //   .findOne({ title: 'Once upon a timex.' })
+      //   .populate('_creator')
+      //   .exec(function (err, story) {
+      //     if (err) return handleError(err);
+      //     console.log('The creator is %s', story._creator.name);
+      //     // prints "The creator is Aaron"
+      // });
       res.render('restaurant_page', {
-        restaurants: restaurants,
+        // restaurants: restaurants,
         tgi_pic: defaultRestaurants[0].picture,
         tgi: defaultRestaurants[0].name,
         tgi_address: defaultRestaurants[0].address,
@@ -113,8 +134,8 @@ app.get('/restaurant_page', (req, res) => {
         sushi_samba_address: defaultRestaurants[2].address,
         sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
         picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
-      });
-    });
+      // });
+    // });
   });
 });
 
@@ -161,7 +182,7 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
   });
 
-  reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview, userId);
+  Reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview, userId);
 });
 
 app.get('/profile', (req, res) => {
