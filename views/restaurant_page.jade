@@ -9,32 +9,35 @@ html
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='/css/restaurant_page.css')
   body
-    #whole_wrapper
-      .upper_div
-        .restaurant_name
-          | #{tgi}
-      .restaurant_image
-        img(src=tgi_pic)
-      #restaurant_container
-        .restaurant_title
-          | #{tgi}
-        #circle_container
-          .outer-circle
-            .inner-circle
-          .outer-circle
-            .inner-circle
-          .outer-circle
-            .inner-circle
-          .outer-circle
-            .inner-circle
-          .outer-circle
-            .inner-circle
-      hr
-      .row.address_container
-        .col.s9.address
-          | #{tgi_address}
-          p Neighbourgood: #{tgi_neighbourhood}
-        .col.s3
+    each row in restaurants
+      #whole_wrapper
+        .upper_div
+          .restaurant_name
+            | #{restaurants[0].restaurant.name}
+        .restaurant_image
+          img(src='https://b.zmtcdn.com/data/pictures/chains/0/6100580/5f113fc379bf1daf5e57f60ca65e7d35_featured_v2.jpg')
+        #restaurant_container
+          .restaurant_title
+            | #{restaurants[0].restaurant.name}
+          #circle_container
+            .outer-circle
+              .inner-circle
+            .outer-circle
+              .inner-circle
+            .outer-circle
+              .inner-circle
+            .outer-circle
+              .inner-circle
+            .outer-circle
+              .inner-circle
+        hr
+        .row.address_container
+          .col.s9.address
+            | #{restaurants[0].restaurant.address}
+            p Neighbourgood: #{restaurants[0].restaurant.locality}
+          .col.s3
+
+
       hr
       .row.s
         div

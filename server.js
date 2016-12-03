@@ -1,5 +1,5 @@
 const express = require('express');
-const restaurants = require('./models/restaurants');
+const Restaurant = require('./models/restaurants');
 const reviews = require('./models/reviews');
 const User = require('./models/User');
 const group = require('./models/groups');
@@ -87,31 +87,34 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/restaurant_page', (req, res) => {
-
   reviews.find().distinct('restaurant_id', (error, ids) => {
     const uniqueRestaurantsIds = ids;
-    restaurants.find({ _id: uniqueRestaurantsIds }, (error, story) => {
-      if (error) {
-        console.log(error);
+    Restaurant.find({ _id: uniqueRestaurantsIds }, (err, restaurants) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(restaurants);
+        console.log('0', restaurants[0].restaurant.location.locality);
       }
-      console.log(story[0].restaurant.name);
-    });
-  });
 
-  res.render('restaurant_page',
-  { tgi_pic: defaultRestaurants[0].picture,
-    tgi: defaultRestaurants[0].name,
-    tgi_address: defaultRestaurants[0].address,
-    tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
-    gauchos_pic: defaultRestaurants[1].picture,
-    gauchos: defaultRestaurants[1].name,
-    gauchos_address: defaultRestaurants[1].address,
-    gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
-    sushi_samba_pic: defaultRestaurants[2].picture,
-    sushi_samba: defaultRestaurants[2].name,
-    sushi_samba_address: defaultRestaurants[2].address,
-    sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
-    picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
+
+      res.render('restaurant_page', {
+        restaurants: restaurants,
+        tgi_pic: defaultRestaurants[0].picture,
+        tgi: defaultRestaurants[0].name,
+        tgi_address: defaultRestaurants[0].address,
+        tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
+        gauchos_pic: defaultRestaurants[1].picture,
+        gauchos: defaultRestaurants[1].name,
+        gauchos_address: defaultRestaurants[1].address,
+        gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
+        sushi_samba_pic: defaultRestaurants[2].picture,
+        sushi_samba: defaultRestaurants[2].name,
+        sushi_samba_address: defaultRestaurants[2].address,
+        sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
+        picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
+      });
+    });
   });
 });
 
@@ -123,7 +126,7 @@ app.get('/search/:query', (req, res) => {
   const userInput = req.params.query;
 
   if (userInput.length > 2) {
-    restaurants.findRestaurant(userInput, (err, restaurantsData) => {
+    Restaurant.findRestaurant(userInput, (err, restaurantsData) => {
       res.end(JSON.stringify(restaurantsData));
     });
   }

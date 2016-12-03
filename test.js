@@ -1,18 +1,41 @@
-// function weatherApp(coordinates) {
-// 	var https = require('https');
-// 	var request = https.get('https://api.forecast.io/forecast/73430f139879e46bd6a8e95f20306f78/' + coordinates, function(response) {
-// 		var body = '';
-// 		response.on('data', function(chunk) {
-// 			body += chunk;
-// 		});
-// 		response.on('end', function() {
-// 			var data = JSON.parse(body);
-// 			console.log(data.hourly.summary);
-// 		 });
-// 	});
-//
-// 	request.on('error', function(error) {
-// 			console.log('Got error: ' + error.message);
-// 	});
-// }
-// weatherApp('51.5712,0.1491');
+var j = { _id: '5810b374b2c73b0a7c8f41fd',
+  restaurant:
+   { R: { res_id: 113537 },
+     apikey: '39075b374a5c0d9ee98fcc8e52d0a07c',
+     id: '113537',
+     name: 'Puffizza',
+     url: 'https://www.zomato.com/ahmedabad/puffizza-gurukul?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+     cuisines: 'Italian, Fast Food',
+     average_cost_for_two: 700,
+     price_range: 2,
+     currency: 'Rs.',
+     offers: [],
+     zomato_events: [ [Object] ],
+     thumb: 'https://b.zmtcdn.com/data/pictures/7/113537/44fcbc54efe6bd58c2ed98ceeaa27fbd_featured_v2.jpg',
+     user_rating:
+      { aggregate_rating: '4.2',
+        rating_text: 'Very Good',
+        rating_color: '5BA829',
+        votes: '646' },
+     photos_url: 'https://www.zomato.com/ahmedabad/puffizza-gurukul/photos#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+     menu_url: 'https://www.zomato.com/ahmedabad/puffizza-gurukul/menu#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+     featured_image: 'https://b.zmtcdn.com/data/pictures/7/113537/44fcbc54efe6bd58c2ed98ceeaa27fbd.jpg',
+     has_online_delivery: 1,
+     is_delivering_now: 1,
+     deeplink: 'zomato://restaurant/113537',
+     order_url: 'https://www.zomato.com/ahmedabad/puffizza-gurukul/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+     order_deeplink: '',
+     has_table_booking: 0,
+     events_url: 'https://www.zomato.com/ahmedabad/puffizza-gurukul/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+     establishment_types: [],
+     location:
+      { address: '103, Kairos, Opposite Mahatma Gandhi Labour Institute, Drive In Road, Gurukul, Ahmedabad',
+        locality: 'Gurukul',
+        city: 'Ahmedabad',
+        city_id: 11,
+        latitude: '23.0460553848',
+        longitude: '72.5377165899',
+        zipcode: '',
+        country_id: 1 } } }
+
+        console.log(j.restaurant.location.address);

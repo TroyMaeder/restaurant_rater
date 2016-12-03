@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const restaurantSchema = new mongoose.Schema({
   restaurant: {
     name: String,
-    address: String,
-    picture: String,
-    locality: String,
+    url: String,
+    featured_image: String,
+    location: {
+      address: String,
+      locality: String,
+    },
   },
 });
 
