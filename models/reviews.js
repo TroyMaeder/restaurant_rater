@@ -21,7 +21,7 @@ userReview.statics.saveReview = (restaurantId, restaurantRating, dateVisited, re
     if (err) {
       return console.error(err);
     }
-    console.log(restaurant, ' is saved!');
+    // console.log(restaurant, ' is saved!');
   });
 };
 
