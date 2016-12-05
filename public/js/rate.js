@@ -19,7 +19,7 @@ document.getElementById('circle_one').addEventListener('click', function() {
   turnCirclesWhite()
   turnCirclesGreen(1)
 });
-
+  
 document.getElementById('circle_two').addEventListener('click', function() {
   turnCirclesWhite()
   turnCirclesGreen(2)

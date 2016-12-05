@@ -1,5 +1,4 @@
 doctype html
-
 html
   head
     meta(charset='utf-8')
@@ -42,16 +41,15 @@ html
           i.col.s1.material-icons language
         .col.s10.website
           a(href=val.restaurant.url) Visit Website
-      .row.navigation_footer
-        a(href='/profile', rel='stylesheet')
-          i.material-icons.footer account_circle
-        i.material-icons.footer favorite
-        i.material-icons.footer add
-        a(href='/search', rel='stylesheet')
+        .row.navigation_footer
+          a(href='/profile', rel='stylesheet')
+            i.material-icons.footer account_circle
+          a(href='/search', rel='stylesheet')
+            i.material-icons.footer add
           i.material-icons.footer location_on
-        a(href='/group', rel='stylesheet')
-          i.material-icons.footer create
-    i#last_picture.material-icons.footer vpn_key
+          a(href='/group', rel='stylesheet')
+            i.material-icons.footer create
+          i#last_picture.material-icons.footer vpn_key
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')

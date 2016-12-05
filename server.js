@@ -64,16 +64,36 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     const groupId = req.query.state;
     const userId = req.user._id;
 
-    if (groupId) {
-      Group.saveUserToGroup(groupId, userId, (err) => {
-        console.log(err);
-        // res.redirect('/error');
-      });
-      res.redirect('/restaurant_page');
-    } else {
-      res.redirect('/default_restaurants');
-    }
-  });
+    // Group.findOne({}, function(err, group) {
+    //   if (err) return handleError(err);
+    //
+    //   if (group) {
+    //      return res.redirect('/restaurant_page');
+    //   } else {
+    //     return res.redirect('/default_restaurants');
+    //   }
+    // });
+
+  //   if (groupId) {
+  //     Group.saveUserToGroup(groupId, userId, (err) => {
+  //       console.log(err);
+  //       // res.redirect('/error');
+  //       res.redirect('/restaurant_page');
+  //     });
+  //     res.redirect('/restaurant_page');
+  //   } else {
+  //     res.redirect('/default_restaurants');
+  //   }
+  // });
+   if (groupId) {
+     Group.saveUserToGroup(groupId, userId, (err) => {
+       console.log(err);
+       // res.redirect('/error');
+     });
+   }
+
+   res.redirect('/restaurant_page');
+ });
 
 app.get('/', (req, res) => {
   res.render('login');
@@ -87,6 +107,10 @@ app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/login');
 });
+
+// app.get('/home', (req, res) => {
+//   User.findOne({ users: { $in: } }, (err, group) => {
+// )};
 
 app.get('/restaurant_page', (req, res) => {
   const userId = req.user._id;
@@ -145,6 +169,7 @@ app.get('/search', (req, res) => {
 
 app.get('/search/:query', (req, res) => {
   const userInput = req.params.query;
+  console.log(userInput, '---------');
 
   if (userInput.length > 2) {
     Restaurant.findRestaurant(userInput, (err, restaurantsData) => {

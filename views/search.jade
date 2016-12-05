@@ -3,16 +3,22 @@ html
   head
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     title Restaurant Finder
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
     link(type='text/css', rel='stylesheet', href='/css/search.css')
   body
     #wrap
       input#user_input(type='text', <='', input='')
-    .predicted_restaurant_wrap
-      #restaurant0
-    .predicted_restaurant_wrap
-      #restaurant1
-    .predicted_restaurant_wrap
-      #restaurant2
-    .predicted_restaurant_wrap
-      #restaurant3
-  script(src='/js/search.js')
+      .predicted_restaurant_wrap
+        #restaurant0
+      .predicted_restaurant_wrap
+        #restaurant1
+      .predicted_restaurant_wrap
+        #restaurant2
+      .predicted_restaurant_wrap
+        #restaurant3
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='/js/materialize.min.js')
+    script(type='text/javascript', src='/js/search.js')
