@@ -6,13 +6,10 @@ html
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
-    link(href='https://fonts.googleapis.com/css?family=Reem+Kufi', rel='stylesheet')
-    link(href='https://fonts.googleapis.com/css?family=Lobster', rel='stylesheet')
     link(type='text/css', rel='stylesheet', href='/css/create_group.css')
   body
     #heading
-      | New
-      a  group
+      | New group
     #form_container
       form(action='/save_group')
         input(type='text', name='group_name' value='Enter group name')

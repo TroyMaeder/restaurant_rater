@@ -7,21 +7,8 @@
   letter-spacing: 2px;
 }
 
-#heading {
-  color: #1c7d73;
-  font-size: 35px;
-  font-family: 'Reem Kufi', sans-serif;
-  letter-spacing: 2px;
-}
-
 #form_container {
   margin-left: 6%;
   padding: 15px;
   font-size: 15px;
 }
-
-/*input[type="text"] {
-  font-size: 13px;
-  font-family: 'Reem Kufi', sans-serif;
-  letter-spacing: 1px;
-}*/
