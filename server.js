@@ -1,8 +1,8 @@
 const express = require('express');
 const Restaurant = require('./models/restaurants');
-const Reviews = require('./models/reviews');
+const Review = require('./models/reviews');
 const User = require('./models/User');
-const group = require('./models/groups');
+const Group = require('./models/groups');
 const defaultRestaurants = require('./default_restaurants');
 const FacebookStrategy = require('passport-facebook');
 const passport = require('passport');
@@ -65,7 +65,7 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     const userId = req.user._id;
 
     if (groupId) {
-      group.saveUserToGroup(groupId, userId, (err) => {
+      Group.saveUserToGroup(groupId, userId, (err) => {
         console.log(err);
         // res.redirect('/error');
       });
@@ -91,8 +91,8 @@ app.get('/restaurant_page', (req, res) => {
   const userId = req.user._id;
   const restaurantIds = [];
 
-  group.findOne({ users: { $in: [userId] }}, (err, group) => {
-    Reviews.find({ users: { $in: group.users }}, (err, reviews) => {
+  Group.findOne({ users: { $in: [userId] }}, (err, group) => {
+    Review.find({ users: { $in: group.users }}, (err, reviews) => {
       for (let i = 0; i < reviews.length; i++) {
         restaurantIds.push(reviews[i].restaurant_id.toString())
       }
@@ -163,7 +163,7 @@ app.get('/submit_review/:restaurantId/:restaurantName', (req, res) => {
     sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
   });
 
-  Reviews.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview, userId);
+  Review.saveReview(restaurantId, restaurantRating, reviewDate, restaurantReview, userId);
 });
 
 app.get('/profile', (req, res) => {
@@ -173,7 +173,7 @@ app.get('/profile', (req, res) => {
 app.get('/group', (req, res) => {
   const userId = req.user._id;
 
-  group.findOne({ users: userId }, (err, usersGroup) => {
+  Group.findOne({ users: userId }, (err, usersGroup) => {
     if (err) {
        console.log(err, 'there is a error inside findOne');
     }
@@ -195,7 +195,7 @@ app.get('/save_group', (req, res) => {
   const groupName = req.query.group_name;
   const userId = req.user._id;
 
-  group.createGroup(groupName, userId);
+  Group.createGroup(groupName, userId);
 
   return res.redirect('/group');
 });
