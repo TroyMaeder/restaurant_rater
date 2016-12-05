@@ -98,25 +98,24 @@ app.get('/restaurant_page', (req, res) => {
       }
       unique(restaurantIds);
       Restaurant.find({ _id: { $in: restaurantIds } }, (errors, restaurants) => {
-        console.log(restaurants);
+        res.render('restaurant_page', {
+          restaurants: restaurants,
+          // tgi_pic: defaultRestaurants[0].picture,
+          // tgi: defaultRestaurants[0].name,
+          // tgi_address: defaultRestaurants[0].address,
+          // tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
+          // gauchos_pic: defaultRestaurants[1].picture,
+          // gauchos: defaultRestaurants[1].name,
+          // gauchos_address: defaultRestaurants[1].address,
+          // gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
+          // sushi_samba_pic: defaultRestaurants[2].picture,
+          // sushi_samba: defaultRestaurants[2].name,
+          // sushi_samba_address: defaultRestaurants[2].address,
+          // sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
+          // picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
+        });
       });
     });
-  });
-  res.render('restaurant_page', {
-    // restaurants: restaurants,
-    tgi_pic: defaultRestaurants[0].picture,
-    tgi: defaultRestaurants[0].name,
-    tgi_address: defaultRestaurants[0].address,
-    tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
-    gauchos_pic: defaultRestaurants[1].picture,
-    gauchos: defaultRestaurants[1].name,
-    gauchos_address: defaultRestaurants[1].address,
-    gauchos_neighbourhood: defaultRestaurants[1].neighbourhood,
-    sushi_samba_pic: defaultRestaurants[2].picture,
-    sushi_samba: defaultRestaurants[2].name,
-    sushi_samba_address: defaultRestaurants[2].address,
-    sushi_samba_neighbourhood: defaultRestaurants[2].neighbourhood,
-    picture: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyAVc4xMroGAOiRjn5-5rJmCdqvzxo73VIU&q=Space+Needle,Seattle+WA',
   });
 });
 

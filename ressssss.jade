@@ -1,0 +1,119 @@
+doctype html
+
+html
+  head
+    meta(charset='utf-8')
+    title restaurant_rater
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
+    link(type='text/css', rel='stylesheet', href='/css/restaurant_page.css')
+  body
+    #whole_wrapper
+      .upper_div
+        .restaurant_name
+          | #{tgi}
+      .restaurant_image
+        img(src=tgi_pic)
+      #restaurant_container
+        .restaurant_title
+          | #{tgi}
+        #circle_container
+          .outer-circle
+            .inner-circle
+          .outer-circle
+            .inner-circle
+          .outer-circle
+            .inner-circle
+          .outer-circle
+            .inner-circle
+          .outer-circle
+            .inner-circle
+      hr
+      .row.address_container
+        .col.s9.address
+          | #{tgi_address}
+          p Neighbourgood: #{tgi_neighbourhood}
+        .col.s3
+      hr
+    .row.s
+      div
+        i.col.s1.material-icons language
+      .col.s10.website
+        | Visit Website
+    .upper_div
+      .restaurant_name
+        |  #{gauchos}
+    .restaurant_image
+      img(src=gauchos_pic)
+    #restaurant_container
+      .restaurant_title
+        | #{gauchos}
+      #circle_container
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+    hr
+    .row.address_container
+      .col.s9.address
+        | #{gauchos_address}
+        p Neighbourgood: #{gauchos_neighbourhood}
+      .col.s3
+    hr
+    .row.s
+      div
+        i.col.s1.material-icons language
+      .col.s10.website
+        | Visit Website
+    .upper_div
+      .restaurant_name
+        |  #{sushi_samba}
+    .restaurant_image
+      img(src=sushi_samba_pic)
+    #restaurant_container
+      .restaurant_title
+        | #{sushi_samba}
+      #circle_container
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+        .outer-circle
+          .inner-circle
+    hr
+    .row.address_container
+      .col.s9.address
+        | #{sushi_samba_address}
+        p Neighbourgood: #{sushi_samba_neighbourhood}
+      .col.s3
+    hr
+  .row.s
+    div
+      i.col.s1.material-icons language
+    .col.s10.website
+      | Visit Website
+    .row.navigation_footer
+      a(href='/profile', rel='stylesheet')
+        i.material-icons.footer account_circle
+      i.material-icons.footer favorite
+      i.material-icons.footer add
+      a(href='/search', rel='stylesheet')
+        i.material-icons.footer location_on
+      a(href='/group', rel='stylesheet')
+        i.material-icons.footer create
+
+    i#last_picture.material-icons.footer vpn_key
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='/js/materialize.min.js')
