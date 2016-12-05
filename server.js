@@ -91,13 +91,13 @@ app.get('/restaurant_page', (req, res) => {
   const userId = req.user._id;
   const restaurantIds = [];
 
-  Group.findOne({ users: { $in: [userId] }}, (err, group) => {
-    Review.find({ users: { $in: group.users }}, (err, reviews) => {
+  Group.findOne({ users: { $in: [userId] } }, (err, group) => {
+    Review.find({ users: { $in: group.users } }, (error, reviews) => {
       for (let i = 0; i < reviews.length; i++) {
         restaurantIds.push(reviews[i].restaurant_id.toString())
       }
       unique(restaurantIds);
-      Restaurant.find({ _id: { $in: restaurantIds } }, (error, restaurants) => {
+      Restaurant.find({ _id: { $in: restaurantIds } }, (errors, restaurants) => {
         console.log(restaurants);
       });
     });
