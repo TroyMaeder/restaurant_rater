@@ -105,7 +105,8 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/login')
+  res.redirect('/login');
+});
 
 app.get('/restaurant_page', (req, res) => {
   const userId = req.user._id;
