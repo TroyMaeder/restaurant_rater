@@ -36,12 +36,13 @@ html
                 br
                 .form_input
                   input(type='text', name='review', <br='')
-                  br
-                  .form_input
-                    #review_counter
-                      input(type='text', name='ratings_five')
-                  #form_button
-                    input(type='submit', value='Submit')
+                br
+                .form_input
+                  input(type='hidden', id='review_counter', name='ratings_five', value=restaurantRating)
+                p hello
+                p #{restaurantRating}
+                #form_button
+                  input(type='submit', value='Submit')
 
       // Import jQuery before materialize.js
       script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
