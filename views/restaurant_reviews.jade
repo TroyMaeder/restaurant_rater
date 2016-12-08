@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title restaurant_rater
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
+    link(type='text/css', rel='stylesheet', href='/css/restaurant_page.css')
+  body
+    #title
+      | Restaurant Reviews
+    #wrapper
+      #user
+        | User: Troy Maeder
+      #rating
+        | Rated: 3
+      #date
+        | Date visited: 3 November 2015
+      #review
+        | Review: This restaurant was absolutely amazing!!!! Go there bitches!
+      .row.navigation_footer
+        a(href='/profile', rel='stylesheet')
+          i.material-icons.footer account_circle
+        a(href='/search', rel='stylesheet')
+          i.material-icons.footer add
+        i.material-icons.footer location_on
+        a(href='/group', rel='stylesheet')
+          i.material-icons.footer create
+        i#last_picture.material-icons.footer vpn_key
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(type='text/javascript', src='/js/materialize.min.js')
+    script(type='text/javascript', src='/js/restaurant_reviews.js')

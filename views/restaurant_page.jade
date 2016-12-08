@@ -10,46 +10,47 @@ html
   body
     each val, key in restaurants
       #whole_wrapper
-        .upper_div
-          .restaurant_name
-            | #{val.restaurant.name}
-        .restaurant_image
-          img(src=val.restaurant.thumb)
-        #restaurant_container
-          .restaurant_title
-            | #{val.restaurant.name}
-          #circle_container
-            .outer-circle
-              .inner-circle
-            .outer-circle
-              .inner-circle
-            .outer-circle
-              .inner-circle
-            .outer-circle
-              .inner-circle
-            .outer-circle
-              .inner-circle
-        hr
-        .row.address_container
-          .col.s9.address
-            | #{val.restaurant.location.address}
-            p Neighbourgood: #{val.restaurant.location.locality}
-          .col.s3
-        hr
-      .row.s
-        div
-          i.col.s1.material-icons language
-        .col.s10.website
-          a(href=val.restaurant.url) Visit Website
-        .row.navigation_footer
-          a(href='/profile', rel='stylesheet')
-            i.material-icons.footer account_circle
-          a(href='/search', rel='stylesheet')
-            i.material-icons.footer add
-          i.material-icons.footer location_on
-          a(href='/group', rel='stylesheet')
-            i.material-icons.footer create
-          i#last_picture.material-icons.footer vpn_key
+          .upper_div
+            .restaurant_name
+              | #{val.restaurant.name}
+          .restaurant_image
+            img(src=val.restaurant.thumb)
+          #restaurant_container
+            .restaurant_title
+              | #{val.restaurant.name}
+            #circle_container
+              .outer-circle
+                .inner-circle
+              .outer-circle
+                .inner-circle
+              .outer-circle
+                .inner-circle
+              .outer-circle
+                .inner-circle
+              .outer-circle
+                .inner-circle
+          hr
+          .row.address_container
+            .col.s9.address
+              | #{val.restaurant.location.address}
+              p Neighbourgood: #{val.restaurant.location.locality}
+            .col.s3
+          hr
+        .row.s
+          div
+            i.col.s1.material-icons language
+          .col.s10.website
+            a(href=val.restaurant.url) Visit Website
+          .row.navigation_footer
+            a(href='/profile', rel='stylesheet')
+              i.material-icons.footer account_circle
+            a(href='/search', rel='stylesheet')
+              i.material-icons.footer add
+            i.material-icons.footer location_on
+            a(href='/group', rel='stylesheet')
+              i.material-icons.footer create
+            i#last_picture.material-icons.footer vpn_key
     // Import jQuery before materialize.js
     script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(type='text/javascript', src='/js/materialize.min.js')
+    script(type='text/javascript', src='/js/restaurant_reviews.js')
