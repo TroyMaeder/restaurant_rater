@@ -86,23 +86,17 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-app.get('/restaurant_reviews', (req, res) => {
-  Review.find({  })
-  .populate('users')
-  .exec(function (err, users) {
-    if (err) console.log(err, ' this is the error');
-    console.log(users, 'these are the users');
+app.get('/restaurant_reviews/:restaurantId', (req, res) => {
+  const userId = req.user._id;
+  const restaurantId = req.params.restaurantId;
+
+  Group.findOne({ users: { $in: [userId] } }, (err, group) => {
+    for (var i = 0; i < group.users.length; i++) {
+      Review.find({users: group.users[i], restaurant_id: restaurantId }, (err, user) => {
+      });
+    }
   });
-  // Group
-  // .findOne({ users: ["5846c67947cc210b62fd7598"]})
-  // .populate('name')
-  // .exec(function (err, story) {
-  // if (err) {
-  //   console.log(err, ' we are inside the error');
-  // } else {
-  //   console.log(story, ' this is the story');
-  // }
-  // })
+
   res.render('restaurant_reviews');
 });
 
