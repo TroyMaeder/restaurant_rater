@@ -91,13 +91,14 @@ app.get('/restaurant_reviews/:restaurantId', (req, res) => {
   const restaurantId = req.params.restaurantId;
 
   Group.findOne({ users: { $in: [userId] } }, (err, group) => {
-    for (var i = 0; i < group.users.length; i++) {
-      Review.find({users: group.users[i], restaurant_id: restaurantId }, (err, user) => {
+    for (let i = 0; i < group.users.length; i++) {
+      Review.find({ users: group.users[i], restaurant_id: restaurantId }, (errs, restaurants) => {
+        res.render('restaurant_reviews', {
+          restaurants,
+        });
       });
     }
   });
-
-  res.render('restaurant_reviews');
 });
 
 app.get('/restaurant_page', (req, res) => {
@@ -130,6 +131,7 @@ app.get('/restaurant_page', (req, res) => {
       Restaurant.find({ _id: { $in: restaurantIds } }, (errors, restaurants) => {
         res.render('restaurant_page', {
           restaurants,
+          restaurantIds,
         });
       });
     });
