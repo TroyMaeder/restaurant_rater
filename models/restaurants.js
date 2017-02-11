@@ -17,7 +17,6 @@ restaurantSchema.statics.findRestaurant = function(userInput, callback) {
 
   Restaurant.find({ 'restaurant.name': userInputRegEx }, { 'restaurant.name': 1, 'restaurant._id': 1 },
   (err, restaurants) => {
-    console.log(restaurants);
     callback(err, restaurants);
   });
 };

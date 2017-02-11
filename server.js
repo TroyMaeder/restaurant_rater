@@ -114,7 +114,9 @@ app.get('/restaurant_page', (req, res) => {
         tgi_neighbourhood: defaultRestaurants[0].neighbourhood,
       });
     }
+    console.log(group, group.users);
     Review.find({ users: { $in: group.users } }, (error, reviews) => {
+      console.log(reviews, '------');
       if (reviews.length === 0) {
         return res.render('default_restaurants', {
           tgi_pic: defaultRestaurants[0].picture,

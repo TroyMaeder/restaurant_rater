@@ -20,8 +20,6 @@ groupSchema.statics.createGroup = (groupName, userId) => {
   });
 };
 
-//TODO make it so you add group with id not name
-
 groupSchema.statics.saveUserToGroup = (groupId, userId, callback) => {
   Group.findOne({_id: groupId}, (err, group) => {
     if (err) {
